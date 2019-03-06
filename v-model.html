@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>v-model数据双向绑定</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- vueapp的根容器 -->
+		<div id="app">
+			<input type="text" v-model="name" placeholder="请输入"/>
+			<h2>你好,{{name}}</h2>
+		</div>
+		<script type="text/javascript">
+			// 实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					name: 'uhuh'
+				}
+			})
+		</script>
+	</body>
+</html>
