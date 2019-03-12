@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>模仿蓝墨云班课界面</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			*{
+				background-color:#EEEEEE;
+			}
+			.container{
+				display: flex;
+				width: 80%;
+				margin: 0 auto;
+			}
+			.card{
+				background-color: white;
+				width: 350px;
+				height: 350px;
+				border: 4px solid white;
+				margin-right: 30px;
+			}
+			.cover{
+				width: 100%;
+				height: 60%;
+			}
+			.avatar{
+				width: 35px;
+				height: 35px;
+				border-radius: 50%;
+			}
+			.content1{
+				position: relative;
+				top: -10px;
+				background-color: white;
+				font-weight: lighter;
+			}
+			.content2{
+				position: relative;
+				top: -15px;
+				background-color: white;
+				font-weight: lighter;
+				font-size: 12px;
+				color: grey;
+			}
+			.myclass{
+				position: relative;
+				top: -215px;
+				float: right;
+			}
+			.foot{
+				height: 40px;
+				width: 100%;
+				background: white;
+				position: relative;
+				top: -25px;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+			.name{
+				font-weight: lighter;
+				color: lightblue;
+				background-color: white;
+				margin-left: 8px;
+			}
+			.creator{
+				font-weight: lighter;
+				color: lightblue;
+				background-color: white;
+				position: relative;
+				right: -130px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- vueapp的根容器 -->
+		<div id="app">
+			<div class="container">
+				<div class="card" v-for="course in courses">
+					<img :src="course.cover" class="cover" >
+					<img v-if="course.myclass" class="myclass" src="img/my-course.png">
+					<h3 class="content1">{{course.classes}}</h3>
+					<h5 class="content2">{{course.cname}}</h5>
+					<div class="foot">
+					<img :src="course.avatar" class="avatar">
+					<h6 class="name">{{course.name}}</h6>
+					<p class="creator" v-if="course.creator">736064</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			// 实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					show:true,
+					courses:[
+						{
+						cover:'img/moso1.png',
+						myclass:true,
+						classes:'软件1721',
+						cname:'vue.js练习',
+						avatar:'img/101.jpg',
+						name:'王洁磊',
+						creator: true
+						},
+					{
+						cover:'img/moso2.jpg',
+						myclass:false,
+						classes:'软件1721',
+						cname:'Web前端框架技术',
+						avatar:'img/avatar01.jpg',
+						name:'许莫淇',
+						creator: false
+						},
+					{
+						cover:'img/moso3.jpg',
+						myclass:false,
+						classes:'软件1721',
+						cname:'轻量级框架技术',
+						avatar:'img/avatar01.jpg',
+						name:'许莫淇',
+						creator: false
+						},
+					{
+						cover:'img/moso4.png',
+						myclass:false,
+						classes:'软件1721',
+						cname:'Web前端技术',
+						avatar:'img/avatar02.png',
+						name:'李中科',
+						creator: false
+						}
+					]
+				}
+			})
+		</script>
+	</body>
+</html>

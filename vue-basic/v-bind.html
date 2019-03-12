@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>v-bind练习</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- vueapp的根容器 -->
+		<div id="app">
+			<p>姓名:{{name}}</p>
+			<input type="text" v-bind:value="description" />
+			<a v-bind:href="url">{{website}}</a>
+			<img :src="avatar">
+		</div>
+		<script type="text/javascript">
+			// 实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					name: '尤雨溪',
+					description: 'Vue.js的创立者',
+					website: 'vue.js官网',
+					url: 'https://cn.vuejs.org/',
+					avatar:'img/101.jpg'
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>v-bind练习</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!-- vueapp的根容器 -->
+		<div id="app">
+			<img :src="image"><br />
+			<a v-bind:href="url">{{name}}</a>
+			<h4>{{writer}}</h4>
+		</div>
+		<script type="text/javascript">
+			// 实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					image:'https://img3.doubanio.com/view/subject/l/public/s29984241.jpg',
+					url: 'https://book.douban.com/subject/30364554/?icn=index-latestbook-subject',
+					name:'摇摆',
+					writer:'[日]西川美和'
+				}
+			})
+		</script>
+	</body>
+</html>

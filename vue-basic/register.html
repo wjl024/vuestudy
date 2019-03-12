@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>关注和取消关注练习</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		<style type="text/css">
+			.container {
+				width: 380px;
+				height: 700px;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.welcome {
+				font-size: 45px;
+				font-weight: 500;
+			}
+
+			.head {
+				position: relative;
+				top: -60px;
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.h-left {
+				font-size: 25px;
+				font-weight: 400;
+			}
+
+			.h-right {
+				font-size: 25px;
+				font-weight: 400;
+				color: rgb(87, 174, 255, 1);
+			}
+
+			.link:hover {
+				cursor: pointer;
+				color: cornflowerblue;
+			}
+
+			.content {
+				display: flex;
+				flex-direction: column;
+				position: relative;
+				top: -50px;
+				padding-top: -10px;
+			}
+
+			.nick {
+				width: 23.75rem;
+				height: 50px;
+				border-radius: 5px;
+				outline: none;
+				border: 1px solid lightgrey;
+				font-size: 25px;
+				padding-left: 15px;
+			}
+
+			.password {
+				width: 23.75rem;
+				height: 50px;
+				border-radius: 5px;
+				outline: none;
+				margin-top: 25px;
+				border: 1px solid lightgrey;
+				font-size: 25px;
+				padding-left: 15px;
+			}
+
+			.content-bottom {
+				display: flex;
+				align-items: center;
+				position: relative;
+				top: -35px;
+				width: 120px;
+				height: 50px;
+				border-radius: 5px;
+				border: 1px solid lightgrey;
+				font-size: 25px;
+				padding-left: 15px;
+			}
+
+			.area {
+				font-weight: 400;
+			}
+
+			.icon-sort-down {
+				margin-left: 100px;
+				position: fixed;
+				margin-top: -65px;
+			}
+
+			.attention {
+				position: relative;
+				top: -60px;
+				font-size: 12px;
+				color: lightslategrey;
+			}
+
+			.number {
+				width: 220px;
+				height: 50px;
+				border-radius: 5px;
+				outline: none;
+				border: 1px solid lightgrey;
+				font-size: 25px;
+				padding-left: 15px;
+				margin-left: 70px;
+			}
+
+			.regionno {
+				position: relative;
+				top: -188px;
+				font-size: 25px;
+			}
+
+			.footer {
+				position: relative;
+				top: -60px;
+				width: 23.75rem;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.register {
+				border-radius: 10px;
+				height: 3.125rem;
+				width: 400px;
+				outline: none;
+				border: 1px solid lightgrey;
+				background-color: rgb(53, 136, 255, 1);
+				color: white;
+				font-size: 20px;
+				margin-top: 20px;
+			}
+
+			.agree {
+				margin-left: 20px;
+				margin-top: -20px;
+			}
+
+			.link1:hover {
+				background-color: royalblue;
+			}
+
+			#app {
+				display: flex;
+			}
+
+			.right-container {
+				display: flex;
+				flex-direction: column;
+				width: 300px;
+				height: 400px;
+				border-radius: 5px;
+				border: 1px solid lightgrey;
+				margin-top: 50px;
+				margin-left: 50px;
+			}
+
+			.title {
+				text-align: center;
+			}
+
+			.warning {
+				color: red;
+				margin-top: 10px;
+			}
+
+			.hint {
+				margin-top: 10px;
+			}
+
+			.register1 {
+				border-radius: 10px;
+				height: 3.125rem;
+				width: 400px;
+				outline: none;
+				border: 1px solid lightgrey;
+				background-color: rgb(53, 136, 255, 1);
+				color: white;
+				font-size: 20px;
+				margin-top: 20px;
+				padding-left: 10px;
+				padding-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- vueapp的根容器 -->
+		<div id="app">
+			<div class="container">
+				<h2 class="welcome">欢迎注册QQ</h2>
+				<div class="head">
+					<h4 class="h-left">每一天，乐在沟通。</h4>
+					<h4 class="h-right link">免费靓号</h4>
+				</div>
+				<div class="content">
+					<form name="myform" method="get">
+						<input name="nick" @focusin="nickfocus" @focusout="nicknofocus" type="text" class="nick" placeholder="昵称" v-model="nick" />
+						<h6 class="warning" v-show="warning"><i class="icon-warning-sign"></i>昵称不能为空</h6>
+						<input name="password" @focusin="Focus" @focusout="notfocus" type="password" class="password" placeholder="密码"
+						 v-model="password" />
+						<h6 class="warning" v-show="warning1"><i class="icon-warning-sign"></i>密码不能为空</h6>
+						<h6 class="hint" v-show="hint"><i class="icon-ok-sign"></i>不能包括空格<br>
+							<i class="icon-warning-sign"></i>长度必须为8-16个字符<br />
+							<i class="icon-warning-sign"></i>必须包含字母、符号、数字中至少两种</h6>
+					</form>
+				</div>
+				<div class="content-bottom">
+					<div class="content-left" @click="showarea">
+						<h3 class="area">{{region}}</h3><i class="icon-sort-down"></i>
+					</div>
+					<div class="content-right">
+						<input type="text" class="number" v-model="number" placeholder="手机号码" />
+					</div>
+				</div>
+				<h6 class="attention">可通过该手机号找回密码</h6>
+				<div class="footer">
+					<input type="checkbox" class="last" checked="checked" />
+					<label for="agree" class="agree">我已阅读并同意相关条款和隐私政策</label>
+					<button @mousedown="clickdown()" @mouseup="commit()" type="button" v-show="click1" class="register link1">立即注册</button>
+					<button @mouseup="clickup()" v-show="click" type="button" class="register1 link1">立即注册</button>
+				</div>
+				<select class="regionno" v-model="region" v-show="show" name="area" size="5">
+					<option value="+86" selected="selected">中国 +86</option>
+					<option value="+852">中国香港特别行政区 +852</option>
+					<option value="+853">中国澳门特别行政区 +853</option>
+					<option value="+886">中国台湾地区 +886</option>
+					<option value="+355">阿尔巴尼亚 +355</option>
+					<option value="+213">阿尔及利亚 +213</option>
+					<option value="+54">阿富汗 +54</option>
+					<option value="+353">爱尔兰 +353</option>
+					<option value="+20">埃及 +20</option>
+				</select>
+			</div>
+			<div class="right-container">
+				<div class="title">
+					请确认你的注册信息
+				</div>
+				<h4>我的昵称:{{nick}}</h4>
+				<h4>我的密码:{{password}}</h4>
+				<h4>地区编码:{{region}}</h4>
+				<h4>我的手机号:{{number}}</h4>
+			</div>
+		</div>
+		<script type="text/javascript">
+			// 实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					nick: '',
+					password: '',
+					number: '',
+					show: false,
+					region: '+86',
+					click: false,
+					click1: true,
+					hint: false,
+					warning: false,
+					warning1: false
+				},
+				methods: {
+					showarea: function() {
+						this.show = !this.show;
+					},
+					Focus: function() {
+						this.hint = true;
+						this.warning1 = false;
+					},
+					notfocus: function() {
+						this.hint = false;
+						if (myform.password.value == 0) {
+							this.warning1 = true;
+						}
+					},
+					nicknofocus: function() {
+						if (myform.nick.value == 0) {
+							this.warning = true;
+						}
+					},
+					nickfocus: function() {
+						this.warning = false;
+					},
+					clickdown: function() {
+						this.click1 = false;
+						this.click = true;
+					},
+					clickup: function() {
+						this.click = false;
+						this.click1 = true;
+					},
+					commit: function() {
+						if (myform.nick.value != 0 && myform.password.value != 0) {
+							alert("注册成功" + this.nick + "欢迎使用QQ");
+						}if(myform.nick.value==0){
+							alert("昵称不能为空");
+						}if(myform.password.value==0){
+							alert("密码不能为空");
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

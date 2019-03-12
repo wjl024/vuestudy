@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js条件和循环的综合练习2</title>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.container {
+				display: flex;
+				flex-direction: column;
+				width: 28%;
+				margin: 0 auto;
+			}
+
+			.header {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				color: #808080;
+			}
+
+			.avatar {
+				width: 70px;
+				height: 70px;
+				border-radius: 50%;
+				border: 1px solid lightgrey;
+			}
+
+			.main {
+				position: relative;
+				left: 100px;
+				display: grid;
+				grid-template-columns: 250px 80px;
+				grid-template-rows: 30px 30px;
+				grid-column-gap: 5px;
+				grid-row-gap: 8px;
+				top: -85px;
+			}
+
+			.content {
+				margin-top: 1px;
+				height: 90px;
+				width: 420px;
+			}
+
+			.name {
+				font-weight: 200;
+			}
+
+			.info {
+				font-weight: 200;
+				font-size: 15px;
+				color: darkgrey;
+			}
+
+			.follow {
+				color: darkgrey;
+			}
+
+			.unfollow {
+				color: green;
+			}
+
+			.foot {
+				width: 420px;
+				height: 50px;
+				border: 1px solid #EEEEEE;
+				border-radius: 10px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.all {
+				font-weight: 300;
+				color: darkgrey;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- vueapp的根容器 -->
+		<div id="app">
+			<div class="container">
+				<div class="header">
+					<h3 class="title">推荐作者</h3>
+					<h3 class="title"><i class="icon icon-refresh"></i>换一批</h3>
+				</div>
+				<div class="content" v-for="writer in writers">
+					<img :src="writer.avatar" class="avatar">
+					<div class="main">
+						<div class="box">
+							<h3 class="name">{{writer.name}}</h3>
+						</div>
+						<div class="box">
+							<p class="follow" v-if="writer.follow"><i class="icon1 icon-ok">已关注</i></p>
+							<p class="unfollow" v-else><i class="icon2 icon-plus">关注</i></p>
+						</div>
+						<div class="box">
+							<h3 class="info">{{writer.info}}</h3>
+						</div>
+					</div>
+				</div>
+				<div class="foot">
+					<h3 class="all">查看全部 &nbsp;></h3>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			// 实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					show: true,
+					writers: [{
+							avatar: 'img/avatar01.jpg',
+							name: '胡七筒',
+							info: '写了325k字.11k喜欢',
+							follow: true
+						},
+						{
+							avatar: 'img/avatar02.png',
+							name: '汪波_偶遇科学',
+							info: '写了302.1k字.1.9k喜欢',
+							follow: false
+						},
+						{
+							avatar: 'img/moso3.jpg',
+							name: '梅拾璎',
+							info: '写了269.3k字.23.4k喜欢',
+							follow: true
+						},
+						{
+							avatar: 'img/moso3.jpg',
+							name: '徐林Grace',
+							info: '写了677.9k字.5.5k喜欢',
+							follow: false
+						},
+						{
+							avatar: 'img/moso3.jpg',
+							name: '行距版君',
+							info: '写了535.1k字.51.8k喜欢',
+							follow: false
+						}
+					]
+				}
+			})
+		</script>
+		<script>
+			document.write('<script src="//' + (location.host || 'localhost').split(':')[0] +
+				':35929/livereload.js?snipver=1"></' + 'script>')
+		</script>
+		<script>
+			document.addEventListener('LiveReloadDisconnect', function() {
+				setTimeout(function() {
+					window.location.reload();
+				}, 500);
+			})
+		</script>
+	</body>
+</html>

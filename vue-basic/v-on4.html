@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>关注和取消关注练习</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+		<style type="text/css">
+			.followed{
+				color: #ddd;
+			}
+			.cancel-followed{
+				color: green;
+			}
+			.link{
+				cursor: pointer;
+			}
+			.btn{
+				width: 100px;
+				height: 35px;
+				color: rgb(234,11,90);
+				border-radius: 20px;
+				font-size: 14px;
+				background-color: #fff;
+				border: 1px solid rgb(234,11,90);
+				outline: none;
+				cursor: pointer;
+			}
+			.btn1{
+				width: 100px;
+				height: 35px;
+				color: rgb(234,11,90);
+				border-radius: 20px;
+				font-size: 14px;
+				background-color:orangered;
+				border: 1px solid rgb(234,11,90);
+				outline: none;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- vueapp的根容器 -->
+		<div id="app">
+			<h2>{{name}}</h2>
+			<span class="followed link" v-show="followed" @click="handlefollow"><i class="icon-ok"></i>已关注</span>
+			<span class="cancel-followed link" v-show="followed===false" @click="handlefollow"><i class="icon-plus"></i>关注</span>
+			<button type="button" class="btn" v-show="like" @click="iffollow"><i class="icon-heart-empty"></i>喜欢&nbsp;&nbsp;|{{likes}}</button>
+			<button type="button" class="btn1" v-show="like===false" @click="unfollow(1)"><i class="icon-heart"></i>喜欢&nbsp;&nbsp;|{{likes}}</button>
+		</div>
+		<script type="text/javascript">
+			// 实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					name:'简书作者',
+					followed:false,
+					likes:1000,
+					like:true
+				},
+				methods:{
+					handlefollow:function(){
+						this.followed=!this.followed;
+					},
+					iffollow:function(){
+						this.like=!this.like;
+						if(like=true){
+						this.likes+=1;
+						}
+					},
+					unfollow:function(num){
+						this.like=!this.like;
+						this.likes-=num;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
