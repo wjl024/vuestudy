@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Vue.jscomputed起步练习</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		<style type="text/css">
+			* {
+				background-color: #eee;
+			}
+
+			.container {
+				width: 90%;
+				margin: 0 auto;
+			}
+
+			.input-box {
+				border: 1px solid #A9A9A9;
+				border-radius: 60px;
+				width: 32%;
+				height: 50px;
+				margin-bottom: 10px;
+				display: flex;
+				padding-left: 20px;
+				align-items: center;
+				justify-content: space-between;
+				padding-right: 20px;
+			}
+
+			.search {
+				height: 30px;
+				width: 88%;
+				background-color: #eee;
+				border-style: none;
+				border-right: 1px solid darkgrey;
+				outline: none;
+				font-size: 20px;
+			}
+
+			.article {
+				display: flex;
+				align-items: center;
+				height: 180px;
+				border: 1px solid #808080;
+				border-radius: 10px;
+				margin-bottom: 8px;
+				padding-right: 5px;
+				padding-left: 15px;
+			}
+
+			.item-title {
+				flex: 1 1 80%;
+			}
+
+			.item-thumbnail {
+				flex: 1 1 20%;
+			}
+
+			.item-thumbnail img {
+				height: 80%;
+				width: 80%;
+			}
+
+			.link {
+				text-decoration: none;
+				color: black;
+				font-weight: 900;
+			}
+
+			.link:hover {
+				text-decoration: underline;
+			}
+
+			.icon-search {
+				margin-left: 15px;
+				color: darkgrey;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- vueapp的根容器 -->
+		<div id="app">
+			<div class="container">
+				<div type="text" class="input-box"><input type="text" placeholder="请输入" v-model="searchString" class="search" />
+					<i class="icon-search icon-2x" @click="search"></i>
+				</div>
+				<div class="article" v-for="article in articles_array">
+					<a :href="article.url" class="item-title link">
+						<h3>{{article.title}}</h3>
+					</a>
+					<div class="item-thumbnail">
+						<img :src="article.image">
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			// 实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					showfirst:true,
+					show:false,
+					searchString: '',
+					articles: [{
+							"title": "堪称神器的3款在线工具，你一定用得上！",
+							"url": "https://www.jianshu.com/p/e83e7999346b",
+							"image": "https://upload-images.jianshu.io/upload_images/11438996-56b25f32c9307b4b?imageMogr2/auto-orient/strip%7CimageView2/2/w/640/format/webp"
+						},
+						{
+							"title": "经典面试题：从 URL 输入到页面展现到底发生什么？",
+							"url": "https://www.jianshu.com/p/45ba3e0d0c7e",
+							"image": "https://upload-images.jianshu.io/upload_images/3973862-d90954249a6f6ccd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp"
+						},
+						{
+							"title": "如何免翻墙使用谷歌搜索和Chrome应用商店",
+							"url": "https://www.jianshu.com/p/484f8e6c88f6",
+							"image": "https://upload-images.jianshu.io/upload_images/858154-015a4b083685a3d1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp"
+						},
+						{
+							"title": "四款前所未有好用的黑科技APP，绝对的良心实用，赶紧告诉家人",
+							"url": "https://www.jianshu.com/p/2aec84d269fe",
+							"image": "https://upload-images.jianshu.io/upload_images/16042993-168b2cb17fd7ec0c?imageMogr2/auto-orient/strip%7CimageView2/2/w/640/format/webp"
+						},
+						{
+							"title": "坚持学英语的方法有哪些",
+							"url": "https://www.jianshu.com/p/0a6a61b0933c",
+							"image": "https://upload-images.jianshu.io/upload_images/3525704-c7293758fc59e56b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/960/format/webp"
+						}
+					],
+					articles_array:[]//该变量用来存放搜索结果
+				},
+				created:function(){
+					this.articles_array=this.articles;
+				},
+				methods: {
+                     search:function(){
+						var searchString=this.searchString;
+						var len=this.articles.length;
+						if(!searchString){
+							this.articles_array=this.articles;
+						}
+						searchString=searchString.trim().toLowerCase();
+						this.articles_array=this.articles_array.filter(function(item){
+							if(item.title.toLowerCase().indexOf(searchString)!=-1){
+								return item
+							}
+						})
+					 }
+				}
+			})
+		</script>
+	</body>
+</html>

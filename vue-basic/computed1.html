@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.jscomputed起步练习-计算购物车总价</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#app{
+				height: 100%;
+			}
+			.container {
+				display: flex;
+				width: 85%;
+				margin: 0 auto;
+				flex-direction: column;
+			}
+
+			.item {
+				display: flex;
+				border: 1px solid #6495ED;
+				width: 90%;
+				height: 100px;
+				border-radius: 10px;
+				margin-bottom: 10px;
+				/* 垂直方向居中 */
+				align-items: center;
+				padding-left: 10px;
+				padding-right: 10px;
+				margin-bottom: 55px;
+			}
+
+			.item-id {
+				flex: 1 1 5%;
+			}
+
+			.item-pic {
+				flex: 1 1 15%;
+			}
+
+			.item-name {
+				flex: 1 1 30%;
+			}
+
+			.item-price {
+				flex: 1 1 20%;
+			}
+
+			.item-count {
+				flex: 1 1 30%;
+			}
+
+			.goods-count {
+				width: 20px;
+			}
+
+			.total-price {
+				width: 100%;
+				height: 50px;
+				bottom: 0;
+				position: fixed;
+				border: 1px solid darkgrey;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				border-right: none;
+				border-left: none;
+				background-color: white;
+			}
+
+			.total {
+				display: flex;
+				flex: 1 1 40%;
+			}
+
+			.total-price1 {
+				font-size: 30px;
+				left: 0;
+				color: yellow;
+				flex: 1 1 20%;
+			}
+
+			.account {
+				outline: none;
+				border-radius: 10px;
+				font-size: 25px;
+				color: white;
+				background-color: orangered;
+				border-style: none;
+				width: 100px;
+			}
+			.total-left{
+				display: flex;
+				flex: 1 1 30%;
+				padding-left: 25px;
+			}
+			.total-right{
+				display: flex;
+				height: 100%;
+				padding-right: 25px;
+			}
+			.link2{
+				text-decoration: none;
+				color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- vueapp的根容器 -->
+		<div id="app">
+			<div class="container">
+				<div class="item" v-for="goods in goodlist" @click="goweb()">
+					<div class="item-id">
+						{{goods.id}}
+					</div>
+					<div class="item-pic">
+						<img :src="goods.pic" style="width:70px;height: 65px;">
+					</div>
+					<div class="item-name">
+						<a :href="goods.url" class="link2">{{goods.name}}</a>
+					</div>
+					<div class="item-price">
+						{{goods.price}}
+					</div>
+					<div class="item-count">
+						<button type="button" @click="goods.count-=1" :disabled="goods.count===0">-</button>
+						<input type="text" v-model="goods.count" class="goods-count" />
+						<button type="button" @click="goods.count+=1">+</button>
+					</div>
+				</div>
+			</div>
+			<div class="total-price">
+				<div class="total-left">
+				<h3 class="total">Total price:<p class="total-price1">￥{{totalPrice}}</p></h3>
+				</div>
+				<div class="total-right">
+				<button type="button" class="account" @click="windows()">结算</button>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			// 实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					goodlist: [{
+							id: 1,
+							name: 'iphone8',
+							price: 6000,
+							count: 0,
+							pic: 'img/iphone8.jpg',
+							url:'https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.56.27641200sTip3z&id=585322790611&skuId=3996743665792&user_id=1776456424&cat_id=2&is_b=1&rn=e6212487ef4624bae57c2788fb78f5ad'
+						},
+						{
+							id: 2,
+							name: 'iphoneX',
+							price: 7000,
+							count: 0,
+							pic: 'img/iphoneX.jpg',
+							url:'https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.6.6a247a79uE2oSn&id=583972739234&skuId=4100773710875&user_id=197232874&cat_id=2&is_b=1&rn=117b243673c231b787268345203cf2af'
+						},
+						{
+							id: 3,
+							name: 'iphone xs max',
+							price: 8000,
+							count: 0,
+							pic: 'img/iphone xs max.png',
+							url:'https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.14.7106109cmbLRp4&id=581152918962&skuId=3880557185834&user_id=197232874&cat_id=2&is_b=1&rn=6cc9df1873d25c70b5c8d4816c5d243b'
+						},
+						{
+							id: 4,
+							name: '小米9',
+							price: 2999,
+							count: 0,
+							pic: 'img/xiaomi9.jpg',
+							url:'https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.5cfb99f72u7XJG&id=587578411300&skuId=4164787995400&standard=1&user_id=2024314280&cat_id=2&is_b=1&rn=b3aba07d7277d1ba9d803409bc63e63d'
+						},
+						{
+							id: 5,
+							name: '红米note7',
+							price: 999,
+							count: 0,
+							pic: 'img/RedmiNote7.jpg',
+							url:'https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.13.9f964d25RnU6WY&id=585890686011&skuId=3973009493052&standard=1&user_id=2024314280&cat_id=2&is_b=1&rn=f0411949ffed3657397b61c91b4e5a1f'
+						},
+						{
+							id: 6,
+							name: 'Redmi6a',
+							price: 569,
+							count: 0,
+							pic: 'img/Redmi6a.jpg',
+							url:'https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.13.9f964d25RnU6WY&id=585890686011&skuId=3973009493052&standard=1&user_id=2024314280&cat_id=2&is_b=1&rn=f0411949ffed3657397b61c91b4e5a1f'
+						}
+					]
+				},
+				methods: {
+
+				},
+				computed: {
+					totalPrice: function() {
+						var totalPrice = 0;
+						var len = this.goodlist.length;
+						for (var i = 0; i < len; i++) {
+							totalPrice += this.goodlist[i].price * this.goodlist[i].count;
+						}
+						return totalPrice;
+					},
+					windows: function() {
+						var totalPrice = 0;
+						var total = 0
+						var len = this.goodlist.length;
+						for (var i = 0; i < len; i++) {
+							totalPrice += this.goodlist[i].price * this.goodlist[i].count;
+							total += this.goodlist[i].count;
+						}
+						alert("你购买了" + total + "件商品," + "需支付总价为:" + totalPrice + "元")
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
