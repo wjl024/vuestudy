@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js-访问API接口数据-蓝墨云班课练习</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- 通过CDN引入axios -->
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<style type="text/css">
+			* {
+				padding: 0px;
+				margin: 0px;
+			}
+
+			body {
+				background-color: #eee;
+				width: 100%;
+			}
+
+			.top {
+				width: 100%;
+				height: 55px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				background-color: white;
+			}
+
+			.top-son {
+				border: 1px solid lightslategrey;
+				background-color: #eee;
+				border-radius: 10px;
+				height: 30px;
+				width: 90%;
+				display: flex;
+				align-items: center;
+			}
+
+			.icon-search {
+				color: darkgrey;
+				flex: 1 1 5%;
+				margin-left: 15px;
+			}
+
+			.search {
+				background-color: #eee;
+				height: 100%;
+				margin-right: 15px;
+				outline: none;
+				flex: 1 1 80%;
+				border: none;
+			}
+
+			.container {
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+
+			}
+
+			.card {
+				width: 100%;
+				height: 90px;
+				display: flex;
+				border: 1px solid #eee;
+				background-color: #fff;
+				align-items: center;
+			}
+            .content{
+				width: 80%;
+				margin-left: 10px;
+			}
+			.course-code{
+				margin-right: 10px;
+			}
+			.cover {
+				margin-left: 5px;
+				width: 20%;
+				height: 60px;
+			}
+			.pic{
+				height: 100%;
+				width: 100%;
+			}
+            .upper{
+				display: flex;
+				justify-content: space-between;
+			}
+			.down{
+				display: flex;
+				margin-top: 5px;
+			}
+			.courseinfo{
+				margin-left: 10px;
+			}
+			.code1{
+				color: #A9A9A9;
+				font-size: 12px;
+			}
+			.foot-bar{
+				bottom: 0;
+				height: 63px;
+				position: fixed;
+				background-color: #F7F7F7;
+				color: #444;
+				border-top: #eee;
+				width: 100%;
+			}
+			.foot-bar ul{
+				display: flex;
+				padding-top: 20px;
+				justify-content: center;
+			}
+			.foot-bar ul li{
+				list-style: none;
+				flex: 0 0 35%;
+				text-align: center;
+			}
+			a{
+				text-decoration: none;
+				color: black;
+			}
+			.code{
+				color: #00BBDD;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="top">
+				<div class="top-son">
+					<i class="icon-search"></i>
+					<input type="text" placeholder="搜索" class="search" />
+				</div>
+			</div>
+			<div class="container">
+				<div class="card" v-for="(course, index) in courses" :key="index">
+					<div class="cover">
+						 <img :src="'img/'+course.cover" class="pic">
+					</div>
+					<div class="content">
+						<div class="upper">
+							<div class="course-class">
+								<p>{{course.courseClass}}</p>
+							</div>
+							<div class="course-code">
+								<p class="code" v-if="loginUserId === course.userId">{{course.courseCode}}</p>
+							</div>
+						</div>
+						<div class="course-name">
+							<p>{{course.courseName}}</p>
+						</div>
+						<div class="down">
+							<div class="username">
+								<p class="code1">{{course.username}}</p>
+							</div>
+							<div class="courseinfo">
+								<p class="code1">学校课表班课</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="foot-bar">
+			<ul>
+				<li><a href="#">班课</a></li>
+				<li><a href="#">发现</a></li>
+				<li><a href="#">我的</a></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					loginUserId: 1,
+					courses: []
+				},
+				created: function() {
+					var _this = this;
+					axios.get('http://192.168.43.194:8080/web/courses')
+						.then(function(response) {
+							console.log(response.data);
+							_this.courses = response.data;
+						})
+				}
+			})
+		</script>
+	</body>
+</html>
