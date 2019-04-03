@@ -175,7 +175,7 @@
 				},
 				created: function() {
 					var _this = this;
-					axios.get('http://192.168.43.194:8080/web/courses')
+					axios.get('http://localhost:8080/web/courses')
 						.then(function(response) {
 							console.log(response.data);
 							_this.courses = response.data;

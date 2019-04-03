@@ -1,0 +1,93 @@
+
+.content {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	height:100%;
+	background-color: #F8F8F8;
+}
+.img {
+	width: 80rpx;
+	height: 80rpx;
+}
+.card1 {
+	height: 100rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.card-left {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	margin-left: 15rpx;
+}
+.card {
+	margin-bottom: 10rpx;
+	width: 100%;
+	height: 100rpx;
+	border: 1rpx solid #000000;
+	background-color: #FFFFFF;
+}
+.card-right {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	margin-right: 15rpx;
+}
+.text-item {
+	margin-left: 30rpx;
+}
+.topbar {
+	width: 100%;
+	height: 100rpx;
+	margin-top: 32rpx;
+	background-color: #F8F8F8;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.top-left{
+	margin-left: 15rpx;
+}
+.top-right{
+	margin-right: 20rpx;
+}
+.left-img{
+	margin-right: 20rpx;
+}
+.img1{
+	height: 40rpx;
+	width: 40rpx;
+}
+
