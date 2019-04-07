@@ -26,7 +26,7 @@
 				var _this = this;
 				// console.log(userDTO.mobile + ',' + userDTO.password);
 				uni.request({
-					url: 'http://localhost:8080/api/user/sign_in',
+					url: 'http://192.168.43.194:8080/api/user/sign_in',
 					method: 'POST',
 					data: {
 						mobile: userDTO.mobile,

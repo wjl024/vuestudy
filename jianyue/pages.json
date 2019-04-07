@@ -15,6 +15,12 @@
 			}
 		},
 		{
+			"path":"pages/register_psd/register_psd",
+			"style":{
+				"navigationBarTitleText":"注册密码"
+			}
+		},
+		{
 			"path":"pages/register/register",
 			"style":{
 				"navigationBarTitleText":"注册"
@@ -39,7 +45,9 @@
 		},
 		{
 			"path":"pages/info/info",
-			"style":{}
+			"style":{
+				"navigationBarTitleText":"文章详情"
+			}
 		},
 		{
 			"path":"pages/user_info/user_info",

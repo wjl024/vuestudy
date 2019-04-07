@@ -3,7 +3,7 @@
          <view class="box nickname">昵称:<input type="text" class="text" v-model="nickname"/></view>
 		 <view class="box per-avatar">个人头像:<image :src="avatar" class="avatar" @tap="showActionSheet"></image></view>
 		 <view class="box">修改密码:</view>
-		 <navigator url="../my/my" class="nav">确定修改</navigator>
+		 <navigator url="../my/my" class="nav" open-type="navigateBack" delta="2">确定修改</navigator>
 	</view>
 </template>
 
@@ -22,12 +22,12 @@
 		onShow() {
 			var _this=this;
 			uni.request({
-				url: 'http://localhost:8080/api/user/avatar?id=' + uni.getStorageSync('login_key').userId,
+				url: 'http://192.168.43.194:8080/api/user/' + uni.getStorageSync('login_key').userId,
 				method: 'GET',
 				header: { 'content-type': 'application/json' },
 				success: res => {
 					if (res.data.code === 0) {
-						console.log(res.data.data);
+						console.log(res.data.data+'————————————');
 						_this.avatar = res.data.data.avatar;
 						_this.nickname = res.data.data.nickname;
 					}
@@ -53,7 +53,7 @@
 										success: function() {
 											console.log('save success');
 											uni.uploadFile({
-												url: 'http://localhost:8080/api/user/avatar',
+												url: 'http://192.168.43.194:8080/api/user/avatar',
 												filePath: res.tempFilePaths[0],
 												name: 'file',
 												formData: {
@@ -79,7 +79,7 @@
 								success: function(res) {
 									console.log(JSON.stringify(res.tempFilePaths));
 									uni.uploadFile({
-										url: 'http://localhost:8080/api/user/avatar',
+										url: 'http://192.168.43.194:8080/api/user/avatar',
 										filePath: res.tempFilePaths[0],
 										name: 'file',
 										formData: {

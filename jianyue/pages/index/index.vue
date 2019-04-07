@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="search-box">
 			<view class="search-text">
-			<input type="text" class="search" placeholder="搜索" v-model="searchstr" />
+				<input type="text" class="search" placeholder="搜索" v-model="searchstr" />
 			</view>
 			<view class="search-icon">
 				<image src="../../static/search-grey.png" @tap="search()"></image>
@@ -36,7 +36,7 @@
 		</view>
 		<hr />
 		<view class="msg-content" v-for="(msg,index) in msgs" :key=index v-show="showall">
-			<view class="msg-tile">{{msg.title}}</view>
+			<navigator url="../info/info" class="msg-tile">{{msg.title}}</navigator>
 			<view class="pic-box">
 				<view class="msgpic">
 					<image :src="msg.msgpic1"></image>
@@ -63,10 +63,49 @@
 				</view>
 			</view>
 		</view>
-		<navigator class="writemsg" url="../write/write">+</navigator>
-		<view class="view" v-show="showview"></view>
-		<view class="travel" v-show="showtravel"></view>
-		<view class="flowerworld" v-show="showflowerworld"></view>
+		<navigator class="writemsg" url="../write/write" open-type="navigate">+</navigator>
+		<view class="msg-content" v-show="showview">
+			<navigator url="../info/info" class="msg-tile">{{msgs[1].title}}</navigator>
+			<view class="pic-box">
+				<view class="msgpic">
+					<image :src="msgs[1].msgpic1"></image>
+				</view>
+				<view class="msgpic">
+					<image :src="msgs[1].msgpic2"></image>
+				</view>
+				<view class="msgpic">
+					<image :src="msgs[1].msgpic3"></image>
+				</view>
+			</view>
+		</view>
+		<view class="msg-content" v-show="showtravel">
+			<view class="msg-tile">{{msgs[0].title}}</view>
+			<view class="pic-box">
+				<view class="msgpic">
+					<image :src="msgs[0].msgpic1"></image>
+				</view>
+				<view class="msgpic">
+					<image :src="msgs[0].msgpic2"></image>
+				</view>
+				<view class="msgpic">
+					<image :src="msgs[0].msgpic3"></image>
+				</view>
+			</view>
+		</view>
+		<view class="msg-content" v-show="showflowerworld">
+			<view class="msg-tile">{{msgs[2].title}}</view>
+			<view class="pic-box">
+				<view class="msgpic">
+					<image :src="msgs[2].msgpic1"></image>
+				</view>
+				<view class="msgpic">
+					<image :src="msgs[2].msgpic2"></image>
+				</view>
+				<view class="msgpic">
+					<image :src="msgs[2].msgpic3"></image>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -106,12 +145,12 @@
 				showview: false,
 				showtravel: false,
 				showflowerworld: false,
-				searchstr:'',
-				result:false
+				searchstr: '',
+				result: false
 			}
 		},
 		onLoad() {
-			
+
 		},
 		methods: {
 			clickshow: function() {
@@ -120,9 +159,9 @@
 				this.showtravel = false;
 				this.showflowerworld = false;
 			},
-			search:function(){
-				this.showall=false;
-				this.result=true;
+			search: function() {
+				this.showall = false;
+				this.result = true;
 			},
 			clickshow1: function() {
 				this.showall = false;
@@ -221,7 +260,7 @@
 		width: 100upx;
 		height: 100upx;
 		right: 25upx;
-		bottom:130upx;
+		bottom: 130upx;
 		border-radius: 50%;
 		background: linear-gradient(40deg, #ffd86f, #fc6262);
 		box-shadow: 5px 5px 10px #AAA;
@@ -232,7 +271,8 @@
 		align-items: center;
 		justify-content: center;
 	}
-	.search-box{
+
+	.search-box {
 		position: relative;
 		top: 25upx;
 		display: flex;
@@ -241,19 +281,22 @@
 		background-color: #EEEEEE;
 		border-radius: 40upx;
 	}
-	.search-text{
+
+	.search-text {
 		flex: 1 1 90%;
 		margin-left: 30upx;
 		display: flex;
 		align-items: center;
 	}
-	.search-icon{
+
+	.search-icon {
 		margin-right: 30upx;
 		flex: 1 1 5%;
 		display: flex;
 		align-items: center;
 	}
-	.search-icon image{
+
+	.search-icon image {
 		width: 60upx;
 		height: 60upx;
 	}

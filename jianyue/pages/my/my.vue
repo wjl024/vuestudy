@@ -2,23 +2,23 @@
 	<view class="container">
 		<view class="top" v-if="!storageData.login">
 			<view class="avatar-box">
-				<image src="../../static/default.png" mode="scaleToFill" class="avatar" v-if="!storageData.login"></image>
+				<image src="../../static/default.png" mode="scaleToFill" class="avatar"></image>
 			</view>
 			<view class="info-box">
-				<navigator url="../signin/signin" v-if="!storageData.login">点击登录</navigator>
+				<navigator url="../signin/signin">点击登录</navigator>
 			</view>
 		</view>
-		<view>
+		<view v-if="!storageData.login">
 			<navigator url="../setting/setting">
-				<button type="primary"  v-if="!storageData.login">个人设置</button>
+				<button type="primary" >个人设置</button>
 			</navigator>
 			<navigator url="../register/register">
-				<button class="primary" type="primary" v-if="!storageData.login">点击注册</button>
+				<button class="primary" type="primary" >点击注册</button>
 			</navigator>
 		</view>
 		<view class="top-login" v-if="storageData.login">
 			<view class="avatar-box-login">
-				<image :src="storageData.avatar" mode="scaleToFill" class="avatar" v-if="storageData.login"></image>
+				<image :src="storageData.avatar" mode="scaleToFill" class="avatar"></image>
 			</view>
 			<view class="text-login">
 				<view><text>{{ storageData.nickname }}</text></view>
@@ -93,7 +93,7 @@ export default {
 		};
 	},
 	onLoad: function() {
-		
+	
 	},
 	onShow: function() {
 		var _this=this;
@@ -104,7 +104,7 @@ export default {
 			this.storageData = {
 				login: loginKey.login,
 				nickname: loginKey.nickname,
-				avatar: loginKey.avatar,
+				avatar:loginKey.avatar,
 			};
 			
 		}else{
@@ -113,14 +113,17 @@ export default {
 			}
 		};
 		uni.request({
-			url: 'http://localhost:8080/api/user/avatar?id=' + uni.getStorageSync('login_key').userId,
+			url: 'http://192.168.43.194:8080/api/user/' + uni.getStorageSync('login_key').userId,
 			method: 'GET',
 			header: { 'content-type': 'application/json' },
 			success: res => {
 				if (res.data.code === 0) {
-					console.log(res.data.data);
-					_this.avatar = res.data.data.avatar;
-					_this.nickname = res.data.data.nickname;
+					console.log(res.data.data+'————————————');
+					this.storageData={
+					avatar : res.data.data.avatar,
+					nickname : res.data.data.nickname,
+					login:loginKey.login,
+					};
 				}
 			}
 		});

@@ -71,7 +71,7 @@
 	width: 100rpx;
 	height: 100rpx;
 	right: 25rpx;
-	bottom:130rpx;
+	bottom: 130rpx;
 	border-radius: 50%;
 	background: -o-linear-gradient(50deg, #ffd86f, #fc6262);
 	background: linear-gradient(40deg, #ffd86f, #fc6262);
@@ -93,7 +93,7 @@
 	    -ms-flex-pack: center;
 	        justify-content: center;
 }
-.search-box{
+.search-box {
 	position: relative;
 	top: 25rpx;
 	display: -webkit-box;
@@ -105,7 +105,7 @@
 	background-color: #EEEEEE;
 	border-radius: 40rpx;
 }
-.search-text{
+.search-text {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 90%;
 	    -ms-flex: 1 1 90%;
@@ -120,7 +120,7 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.search-icon{
+.search-icon {
 	margin-right: 30rpx;
 	-webkit-box-flex: 1;
 	-webkit-flex: 1 1 5%;
@@ -135,7 +135,7 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.search-icon image{
+.search-icon image {
 	width: 60rpx;
 	height: 60rpx;
 }

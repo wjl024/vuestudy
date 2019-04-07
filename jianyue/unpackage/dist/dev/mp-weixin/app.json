@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/message/message",
+    "pages/register_psd/register_psd",
     "pages/register/register",
     "pages/my/my",
     "pages/signin/signin",
