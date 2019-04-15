@@ -1,0 +1,2 @@
+<import src="./numberKeyboard.vue.wxml" />
+    <template is="134d713a" data="{{ ...$root['0'], $root }}"/>

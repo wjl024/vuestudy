@@ -1,0 +1,2 @@
+<import src="./lotteryDraw.vue.wxml" />
+    <template is="5efd7254" data="{{ ...$root['0'], $root }}"/>

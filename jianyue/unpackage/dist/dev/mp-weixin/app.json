@@ -3,11 +3,14 @@
     "pages/index/index",
     "pages/message/message",
     "pages/register_psd/register_psd",
+    "pages/goods/good6",
     "pages/register/register",
     "pages/my/my",
+    "pages/shopping/shopping",
     "pages/signin/signin",
     "pages/write/write",
     "pages/info/info",
+    "pages/info_1/info_1",
     "pages/user_info/user_info",
     "pages/setting/setting",
     "pages/all/all",
@@ -46,5 +49,8 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {
+    "grace-header": "/graceUI/components/graceHeader",
+    "textscroll": "/components/screenTextScroll"
+  }
 }

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "简东西",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "textscroll": "/components/screenTextScroll"
+  }
+}

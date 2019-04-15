@@ -18,6 +18,17 @@
 		</view>
 		<hr/>
 		<view class="content">
+		<view>
+			<view class="grace-bg-white" style="padding: 15upx;">
+				<swiper class="grace-swiper" autoplay="true" indicator-dots indicator-color="rgba(255,255,255,1)" indicator-active-color="#00b26a" style="height: 290upx;" interval="3000">
+					<swiper-item v-for="(item,index) in swiperitems" :key="index">
+						<navigator :url="item.path">
+							<image :src="item.imgurl" mode="widthFix" style="border-radius: 20upx;"></image>
+						</navigator>
+					</swiper-item>
+				</swiper>
+			</view>
+		</view>	
 		<view class="box">
 			<image class="img" src="../../static/关注.png"></image>
 			<navigator class="navbar">关注信息</navigator>
@@ -50,7 +61,15 @@
 	export default {
 		data() {
 			return {
-	
+	           swiperitems:[{
+				   imgurl:'../../static/slider1.jpg',
+				   path:'http://product.dangdang.com/26919013.html'
+			   },
+			   {
+				   imgurl:'../../static/slider2.png',
+				   path:'https://www.jianshu.com/p/9105e48cbddc?utm_medium=index-banner&utm_source=desktop'
+			   }
+			   ]
 			};
 		},
 		onLoad() {

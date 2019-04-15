@@ -1,0 +1,2 @@
+<import src="./crooper.vue.wxml" />
+    <template is="d2be7050" data="{{ ...$root['0'], $root }}"/>

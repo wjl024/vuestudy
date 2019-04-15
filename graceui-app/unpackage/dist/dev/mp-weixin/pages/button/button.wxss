@@ -1,0 +1,4 @@
+
+.btn-area button{width:100%; margin:12rpx 0;}
+.button-sp-area button{width:auto; margin:12rpx;}
+

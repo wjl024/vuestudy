@@ -1,0 +1,2 @@
+<import src="./tabfullpage.vue.wxml" />
+    <template is="26be15e2" data="{{ ...$root['0'], $root }}"/>

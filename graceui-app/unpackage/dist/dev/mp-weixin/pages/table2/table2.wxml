@@ -1,0 +1,2 @@
+<import src="./table2.vue.wxml" />
+    <template is="73563fba" data="{{ ...$root['0'], $root }}"/>

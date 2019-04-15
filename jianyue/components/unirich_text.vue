@@ -105,7 +105,7 @@
 								mask: true,
 							})
 							uni.uploadFile({
-								url: 'http://120.78.87.84:8080/conduit/file/uploadFile', //仅为示例，非真实的接口地址
+								url: 'http://localhost:8080/api/user/avatar', //仅为示例，非真实的接口地址
 								filePath: res.tempFilePaths[0],
 								name: 'image',
 								success: (uploadFileRes) => {
@@ -139,7 +139,7 @@
 								mask: true,
 							})
 							uni.uploadFile({
-								url: 'http://120.78.87.84:8080/conduit/file/uploadFile', //仅为示例，非真实的接口地址
+								url: 'http://localhost:8080/api/user/avatar', //仅为示例，非真实的接口地址
 								filePath: res.tempFilePath,
 								name: 'video',
 								success: (uploadFileRes) => {

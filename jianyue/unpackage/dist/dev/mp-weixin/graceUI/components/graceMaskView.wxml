@@ -1,0 +1,1 @@
+<block wx:if="{{show}}" bind:__l="__l"><view class="grace-mask" bind:__l="__l"><block wx:if="{{show}}"><view class="grace-mask-view" style="{{'width:'+(width)+';'}}"><view class="grace-mask-view-content" style="{{'background:'+(bgcolor)+';'}}"><slot></slot></view></view></block></view></block>

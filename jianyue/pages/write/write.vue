@@ -1,5 +1,9 @@
 <template>
 	<view>
+		<view class="title">
+			<text style="font-size: 40upx;margin-bottom: 20upx;">标题:</text>
+			<input type="text" class="title-content" style="border: 1px solid #EEEEEE;"/>
+		</view>
 		<uni-richtext :richList.sync="richList" :uploadUrl="uploadUrl"></uni-richtext>
 	</view>
 </template>
@@ -13,7 +17,7 @@
 		data() {
 			return {
 				richList: [],
-				uploadUrl: "http://120.78.87.84:8080/conduit/file/uploadFile"
+				uploadUrl: "http://localhost:8080/api/user/avatar"
 			};
 		},
 		onLoad() {
@@ -34,5 +38,13 @@
 </script>
 
 <style scoped="scoped">
-
+    .title{
+		width: 90%;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+	}
+	.title-content{
+		width: 100%;
+	}
 </style>

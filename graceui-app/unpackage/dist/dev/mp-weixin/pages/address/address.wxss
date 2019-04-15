@@ -1,0 +1,8 @@
+
+.grace-list .items .title{height:auto; overflow:hidden; padding:10px 30px 10px 0;}
+.grace-list .title text{float:none; margin-left:12px;}
+.grace-address-list-name{font-weight:700; line-height:1.8em;}
+.grace-address-list-info{line-height:1.8em; color:#999999;}
+.grace-list .items .arrow-right{font-family:"grace-iconfont" !important; font-size:36rpx; font-style:normal; height:56px; line-height:56px; text-align:center; width:30px; position:absolute; z-index:1; right:8px; top:0px;}
+.grace-list .items .arrow-right:before{content:"\E69E"; color:#B2B2B2;}
+

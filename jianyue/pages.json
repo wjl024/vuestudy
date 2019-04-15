@@ -21,6 +21,12 @@
 			}
 		},
 		{
+			"path":"pages/goods/good6",
+			"style":{
+				"navigationBarTitleText":"商品详情"
+			}
+		},
+		{
 			"path":"pages/register/register",
 			"style":{
 				"navigationBarTitleText":"注册"
@@ -30,6 +36,13 @@
 			"path":"pages/my/my",
 			"style":{
 				"navigationBarTitleText":"我的",
+				"enablePullDownRefresh":true
+			}
+		},
+		{
+			"path":"pages/shopping/shopping",
+			"style":{
+				"navigationBarTitleText":"简东西",
 				"enablePullDownRefresh":true
 			}
 		},
@@ -45,6 +58,12 @@
 		},
 		{
 			"path":"pages/info/info",
+			"style":{
+				"navigationBarTitleText":"文章详情"
+			}
+		},
+		{
+			"path":"pages/info_1/info_1",
 			"style":{
 				"navigationBarTitleText":"文章详情"
 			}

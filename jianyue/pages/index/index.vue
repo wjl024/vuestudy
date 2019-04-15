@@ -35,17 +35,86 @@
 			</view>
 		</view>
 		<hr />
-		<view class="msg-content" v-for="(msg,index) in msgs" :key=index v-show="showall">
-			<navigator url="../info/info" class="msg-tile">{{msg.title}}</navigator>
+		<view class="msg-content" v-show="showall">
+			<navigator url="../info_1/info_1" class="msg-tile">{{msgs[0].title}}</navigator>
 			<view class="pic-box">
 				<view class="msgpic">
-					<image :src="msg.msgpic1"></image>
+					<image :src="msgs[0].msgpic1"></image>
 				</view>
 				<view class="msgpic">
-					<image :src="msg.msgpic2"></image>
+					<image :src="msgs[0].msgpic2"></image>
 				</view>
 				<view class="msgpic">
-					<image :src="msg.msgpic3"></image>
+					<image :src="msgs[0].msgpic3"></image>
+				</view>
+			</view>
+			<view class="info-bottom">
+				<view class="info-bottom-left">
+					<image :src="msgs[0].avatar"></image>
+					<text class="nickname">{{msgs[0].nickname}}</text>
+				</view>
+				<view class="info-bottom-right">
+					<text class="nickname">{{msgs[0].time}}</text>
+				</view>
+			</view>
+		</view>
+		<view class="msg-content" v-show="showall">
+			<navigator class="msg-tile">{{msgs[1].title}}</navigator>
+			<view class="pic-box">
+				<view class="msgpic1">
+					<text>{{msgs[1].content}}</text>
+				</view>
+				<view class="msgpic1">
+					<image :src="msgs[1].msgpic1"></image>
+				</view>
+			</view>
+			<view class="info-bottom">
+				<view class="info-bottom-left">
+					<image :src="msgs[1].avatar"></image>
+					<text class="nickname">{{msgs[1].nickname}}</text>
+				</view>
+				<view class="info-bottom-right">
+					<text class="nickname">{{msgs[1].time}}</text>
+				</view>
+			</view>
+		</view>
+		<view class="msg-content" v-show="showall">
+			<navigator url="../info/info" class="msg-tile">{{msgs[2].title}}</navigator>
+			<view class="pic-box">
+				<view class="msgpic2">
+					<text>{{msgs[2].content}}</text>
+				</view>
+			</view>
+			<view class="info-bottom">
+				<view class="info-bottom-left">
+					<image :src="msgs[2].avatar"></image>
+					<text class="nickname">{{msgs[2].nickname}}</text>
+				</view>
+				<view class="info-bottom-right">
+					<text class="nickname">{{msgs[2].time}}</text>
+				</view>
+			</view>
+		</view>
+		<view class="msg-content" v-show="showall">
+			<navigator url="../info_1/info_1" class="msg-tile">{{msgs[3].title}}</navigator>
+			<view class="pic-box">
+				<view class="msgpic">
+					<image :src="msgs[3].msgpic1"></image>
+				</view>
+				<view class="msgpic">
+					<image :src="msgs[3].msgpic2"></image>
+				</view>
+				<view class="msgpic">
+					<image :src="msgs[3].msgpic3"></image>
+				</view>
+			</view>
+			<view class="info-bottom">
+				<view class="info-bottom-left">
+					<image :src="msgs[3].avatar"></image>
+					<text class="nickname">{{msgs[3].nickname}}</text>
+				</view>
+				<view class="info-bottom-right">
+					<text class="nickname">{{msgs[3].time}}</text>
 				</view>
 			</view>
 		</view>
@@ -121,24 +190,33 @@
 						msgpic1: '../../static/picture-1-1.jpg',
 						msgpic2: '../../static/picture-1-2.jpg',
 						msgpic3: '../../static/picture-1-3.jpg',
+						avatar: '../../static/100.jpg',
+						nickname: '111',
+						time: '2222-11-22 22:22:22'
 					},
 					{
 						title: '第二篇文章',
 						msgpic1: '../../static/picture-2-1.jpg',
-						msgpic2: '../../static/picture-2-2.jpg',
-						msgpic3: '../../static/picture-2-3.jpg',
+						content:'之前分享了一些免费开源的优秀中文字体，今天我再发一篇文章，分享几款好用的英文等宽字体，给想要做程序员和已经成为程序员的朋友们，希望大家能够让自己...',
+						avatar: '../../static/105.jpg',
+						nickname: '222',
+						time: '2333-11-22 22:22:22'
 					},
 					{
 						title: '第三篇文章',
-						msgpic1: '../../static/picture-3-1.jpg',
-						msgpic2: '../../static/picture-3-2.jpg',
-						msgpic3: '../../static/picture-3-3.jpg',
+						content:'最近栈长看到一个框架，官方号称可以比 Spring Boot 快 44 倍，居然这么牛逼，有这么神奇吗？今天带大家来认识一下。这个框架名叫：light-4j。官网简介：A fast, lightweight and more productive',
+						avatar: '../../static/104.jpg',
+						nickname: 'java高并发',
+						time: '2444-11-22 22:22:22'
 					},
 					{
 						title: '第四篇文章',
 						msgpic1: '../../static/picture-4-1.jpg',
 						msgpic2: '../../static/picture-4-2.jpg',
 						msgpic3: '../../static/picture-4-3.jpg',
+						avatar: '../../static/104.jpg',
+						nickname: 'java高并发',
+						time: '2555-11-22 22:22:22'
 					}
 				],
 				showall: true,
@@ -224,24 +302,42 @@
 
 	.msg-content {
 		padding-top: 15px;
-		border-top: 1px solid #EEEEEE;
-		border-bottom: 1px solid #EEEEEE;
-		height: 300upx;
-		width: 96%;
+		height: 350upx;
+		width: 95%;
 		margin: 0 auto;
 		display: flex;
 		flex-direction: column;
 	}
-
+    .msg-content-parent{
+		display: flex;
+		flex-direction: column;
+	}
 	.pic-box {
 		display: flex;
 	}
-
+    .msgs-infomation{
+		flex: 1 1 60%;
+	}
 	.msgpic {
 		flex: 1 1 33.33%;
 		height: 180upx;
 	}
-
+	.msgpic1{
+		height: 180upx;
+		font-size: 30upx;
+	}
+	.msgpic2{
+		height: 180upx;
+		font-size: 30upx;
+	}
+    .msgpic1 image{
+		width: 230upx;
+		height: 100%;
+	}
+	.msgpic2 image{
+		width: 230upx;
+		height: 100%;
+	}
 	.msgpic image {
 		width: 230upx;
 		height: 100%;
@@ -255,7 +351,28 @@
 		color: #fd572b;
 		border-bottom: 5upx solid #FD572B;
 	}
-
+	.info-bottom{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 100upx;
+		margin-top: 30upx;
+		border-bottom: 1px solid #EEEEEE;
+		width: 100%;
+	}
+	.info-bottom-left{
+		display: flex;
+	}
+	.info-bottom-left image{
+		width: 65upx;
+		height: 65upx;
+		border-radius: 50%;
+		margin-right: 20upx;
+	}
+    .nickname{
+		font-size: 35upx;
+		color: #E6E7E9;
+	}
 	.writemsg {
 		width: 100upx;
 		height: 100upx;

@@ -1,0 +1,5 @@
+
+movable-area{background:#F0F0F0; width:100%; height:300rpx;}
+movable-view{width:120rpx; height:120rpx; background:#FFFFFF;}
+movable-view image{width:120rpx; height:120rpx; border-radius:5rpx;}
+

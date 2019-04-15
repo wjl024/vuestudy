@@ -1,0 +1,39 @@
+
+page{background:#FFD800;}
+.lottery-draw-banner{width:100%;}
+.lottery-draw-banner image{width:100%;}
+.lottery-draw-msg{width:80%; border:2px solid #FC5566; border-radius:50px;color:#E81B54; background:rgba(255, 255,255, 0.8); margin:0 auto; margin-top:15px; padding-left:15px; height:36px; overflow:hidden;}
+.lottery-draw-main-bg{width:600rpx; height:600rpx; padding:15px; border-radius:10px; margin:0 auto; margin-top:20px; background:#FC5566;}
+.lottery-draw-main{width:570rpx; height:570rpx; padding:12rpx; background:#E81B54; border-radius:8px; display:-webkit-box; display:-webkit-flex; display:-ms-flexbox; display:flex; -webkit-flex-wrap:wrap; -ms-flex-wrap:wrap; flex-wrap:wrap; -webkit-box-pack:center; -webkit-justify-content:center; -ms-flex-pack:center; justify-content:center;}
+.lottery-draw-main .items{width:163rpx; height:163rpx; background:rgba(255,255,255, 1); margin:5rpx; border-radius:5rpx; border:8rpx solid #FFF; overflow:hidden;}
+.lottery-draw-main .btn{background:#FFB001; border-color:#FFB001; color:#AB6120; text-align:center; line-height:163rpx; font-weight:700; font-size:24px;}
+.lottery-draw-main .items .img{width:100rpx; height:100rpx; margin:8rpx auto; overflow:hidden;}
+.lottery-draw-main .items .img image{width:100%;}
+.lottery-draw-main .items .name{line-height:40rpx; height:40rpx; overflow:hidden; text-align:center; color:#AB6120; font-size:12px;}
+.lottery-draw-main .animate{border-color:#FFD800 !important;}
+@-webkit-keyframes breath {
+from { opacity: 1;
+}
+75%  { opacity: 0.9;
+}
+50%  { opacity: 0.8;
+}
+25%  { opacity: 0.9;
+}
+to   { opacity: 1;
+}
+}
+@keyframes breath {
+from { opacity: 1;
+}
+75%  { opacity: 0.9;
+}
+50%  { opacity: 0.8;
+}
+25%  { opacity: 0.9;
+}
+to   { opacity: 1;
+}
+}
+.breath_light{-webkit-animation:breath 1s infinite linear;animation:breath 1s infinite linear;}
+
