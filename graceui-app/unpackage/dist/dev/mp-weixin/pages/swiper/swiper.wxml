@@ -1,2 +1,2 @@
 <import src="./swiper.vue.wxml" />
-    <template is="094db93a" data="{{ ...$root['0'], $root }}"/>
+    <template is="0f0fde6e" data="{{ ...$root['0'], $root }}"/>

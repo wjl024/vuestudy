@@ -132,7 +132,6 @@
 		        align-items: center;
 		padding-left: 5%;
 		font-size: 35rpx;
-		border-bottom: 1px solid #EEEEEE;
 		border-top: 1px solid #EEEEEE;
 }
 .box-info.data-v-4c3ce1c8 {
@@ -178,7 +177,7 @@
 		font-size: 30rpx;
 		margin-left: 5%;
 		margin-top: 30rpx;
-		margin-bottom: 20rpx;
+		margin-bottom: 10rpx;
 		color: #EA6F5A;
 }
 .value.data-v-4c3ce1c8 {
@@ -194,5 +193,6 @@
 		height: 40rpx;
 		background-color: #F0F0F0;
 		width: 100%;
+		border: none;
 }
 

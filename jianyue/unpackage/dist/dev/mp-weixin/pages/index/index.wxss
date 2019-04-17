@@ -73,11 +73,9 @@
 }
 .msgpic1{
 		height: 180rpx;
-		font-size: 30rpx;
 }
 .msgpic2{
 		height: 180rpx;
-		font-size: 30rpx;
 }
 .msgpic1 image{
 		width: 230rpx;
@@ -121,6 +119,10 @@
 		display: -webkit-flex;
 		display: -ms-flexbox;
 		display: flex;
+		-webkit-box-align: center;
+		-webkit-align-items: center;
+		    -ms-flex-align: center;
+		        align-items: center;
 }
 .info-bottom-left image{
 		width: 65rpx;
@@ -129,8 +131,8 @@
 		margin-right: 20rpx;
 }
 .nickname{
-		font-size: 35rpx;
-		color: #E6E7E9;
+		font-size: 25rpx;
+		color: #999999;
 }
 .writemsg {
 		width: 100rpx;

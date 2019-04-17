@@ -14,7 +14,7 @@
 			<view class="box" style="border: none;">编辑个人简介</view>
 		</view>
 		<text class="info">绑定账号登录简阅</text>
-		<text class="sub-info" style="margin-left: 5%;color: #D3D3D3;margin-bottom: 15upx;">出于安全原因,你至少需要保留一种登录方式</text>
+		<view style="margin-left: 5%;color: #D3D3D3;margin-bottom: 15upx;font-size: 25;">出于安全原因,你至少需要保留一种登录方式</view>
 		<view class="block">
 			<view class="box-info">
 				<image src="../../static/phone.png"></image>
@@ -344,7 +344,6 @@
 		align-items: center;
 		padding-left: 5%;
 		font-size: 35upx;
-		border-bottom: 1px solid #EEEEEE;
 		border-top: 1px solid #EEEEEE;
 	}
 
@@ -383,7 +382,7 @@
 		font-size: 30upx;
 		margin-left: 5%;
 		margin-top: 30upx;
-		margin-bottom: 20upx;
+		margin-bottom: 10upx;
 		color: #EA6F5A;
 	}
 
@@ -402,5 +401,6 @@
 		height: 40upx;
 		background-color: #F0F0F0;
 		width: 100%;
+		border: none;
 	}
 </style>

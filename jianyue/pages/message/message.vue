@@ -30,27 +30,27 @@
 			</view>
 		</view>	
 		<view class="box">
-			<image class="img" src="../../static/关注.png"></image>
+			<image class="img1" src="../../static/关注.png"></image>
 			<navigator class="navbar">关注信息</navigator>
 		</view>
 		<view class="box">
-			<image  class="img"  src="../../static/访问.png"></image>
+			<image  class="img1"  src="../../static/访问.png"></image>
 			<navigator class="navbar">最近来访</navigator>
 		</view>
 		<view class="box">
-			<image class="img" src="../../static/信息.png"></image>
+			<image class="img1" src="../../static/信息.png"></image>
 			<navigator class="navbar">系统信息</navigator>
 		</view>
 		<view class="box">
-			<image class="img" src="../../static/记录.png"></image>
+			<image class="img1" src="../../static/记录.png"></image>
 			<navigator class="navbar">浏览记录</navigator>
 		</view>
 		<view class="box">
-			<image class="img" src="../../static/wallet.png"></image>
+			<image class="img1" src="../../static/wallet.png"></image>
 			<navigator class="navbar">钱包</navigator>
 		</view>
 		<view class="box">
-			<image class="img" src="../../static/收藏.png"></image>
+			<image class="img1" src="../../static/收藏.png"></image>
 			<navigator class="navbar">我的收藏</navigator>
 		</view>
 	</view>
@@ -125,5 +125,9 @@
 	.img{
 		width:80upx;
 		height:80upx;
+	}
+	.img1{
+		width:60upx;
+		height:60upx;
 	}
 </style>

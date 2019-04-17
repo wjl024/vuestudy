@@ -10,7 +10,7 @@
 				<view class="login-area-left">
 					<navigator url="../signin/signin" class="click-log" v-if="!storageData.login">点击登录</navigator>
 					<navigator url="../user_info/user_info" class="click-log" v-if="storageData.login">{{storageData.nickname}}</navigator>
-					<text class="list-info">立即领取简阅钻福利</text>
+					<view class="list-info">立即领取简阅钻福利</view>
 				</view>
 				<view class="login-area-right">
 					<navigator url="../register/register">点击注册</navigator>
@@ -96,6 +96,7 @@
 	export default {
 		data() {
 			return {
+				show:false,
 				functions:[
 					{
 					path:'../../static/passage2.png',
@@ -159,7 +160,12 @@
 			});
 		},
 		methods: {
-			
+			showdialog: function() {
+				this.show = true;
+			},
+			closedialog: function() {
+				this.show = false;
+			}
 	}
 }
 </script>
@@ -199,7 +205,7 @@
 		font-size: 50upx;
 	}
 	.list-info{
-		font-size: 30upx;
+		font-size: 29upx;
 		color: #A9A9A9;
 	}
 	.login-area-right{
@@ -273,6 +279,7 @@
 	hr{
 		height:35upx;
 		background-color: #EEEEEE;
+		border: none;
 	}
 	.point{
 		display:block;

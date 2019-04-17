@@ -53,7 +53,7 @@
 						</view>
 						<view class="condition">
 							<view style="font-size: 12upx;letter-spacing: 10upx; font-weight: bold;">MY&nbsp;&nbsp;LOVE&nbsp;&nbsp;TO&nbsp;&nbsp;YOU</view>
-							<view style="font-size: 52upx;letter-spacing: 10upx; margin-bottom: 5upx;">简阅·文化</view>
+							<view style="font-size: 45upx;letter-spacing: 6upx; margin-bottom: 5upx;">简阅·文化</view>
 						</view>
 						<view class="goods-list">
 							<view class="list-content">
@@ -66,7 +66,7 @@
 						</view>
 						<view class="condition">
 							<view style="font-size: 12upx;letter-spacing: 10upx; font-weight: bold;">MY&nbsp;&nbsp;LOVE&nbsp;&nbsp;TO&nbsp;&nbsp;YOU</view>
-							<view style="font-size: 52upx;letter-spacing: 10upx; margin-bottom: 5upx;">居家·好物</view>
+							<view style="font-size: 45upx;letter-spacing: 6upx; margin-bottom: 5upx;">居家·好物</view>
 						</view>
 						<view class="goods-list">
 							<view class="list-content">
@@ -79,7 +79,7 @@
 						</view>
 						<view class="condition">
 							<view style="font-size: 12upx;letter-spacing: 10upx; font-weight: bold;">MY&nbsp;&nbsp;LOVE&nbsp;&nbsp;TO&nbsp;&nbsp;YOU</view>
-							<view style="font-size: 52upx;letter-spacing: 10upx; margin-bottom: 5upx;">科技·数码</view>
+							<view style="font-size: 45upx;letter-spacing: 6upx; margin-bottom: 5upx;">科技·数码</view>
 						</view>
 						<view class="goods-list">
 							<view class="list-content">
@@ -119,7 +119,7 @@
 		<view class="tabbar">
 			<view class="img-bottom"><image src="../../static/home.png"></image></view>
 			<view class="buy">全部商品</view>
-			<view class="buy">购物车</view>
+			<navigator class="buy" url="../cart/cart">购物车</navigator>
 			<view class="buy">我的订单</view>
 		</view>
 	</view>

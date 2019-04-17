@@ -1,1 +1,1 @@
-<template name="3af3d285"><view class="_view 3af3d285"><view wx:if="{{isImmersedStatusbar}}" class="_view 3af3d285" style=" {{('background:' + bgColor + ';' + 'height:' + height + ';')}}"></view></view></template>
+<template name="6994b5d1"><view class="_view 6994b5d1"><view wx:if="{{isImmersedStatusbar}}" class="_view 6994b5d1" style=" {{('background:' + bgColor + ';' + 'height:' + height + ';')}}"></view></view></template>

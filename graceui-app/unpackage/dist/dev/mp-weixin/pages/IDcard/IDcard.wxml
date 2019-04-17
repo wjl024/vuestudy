@@ -1,2 +1,2 @@
 <import src="./IDcard.vue.wxml" />
-    <template is="206ce9da" data="{{ ...$root['0'], $root }}"/>
+    <template is="262f0f0e" data="{{ ...$root['0'], $root }}"/>

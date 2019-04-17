@@ -27,6 +27,12 @@
 			}
 		},
 		{
+			"path":"pages/cart/cart",
+			"style":{
+				"navigationBarTitleText":"购物车"
+			}
+		},
+		{
 			"path":"pages/register/register",
 			"style":{
 				"navigationBarTitleText":"注册"

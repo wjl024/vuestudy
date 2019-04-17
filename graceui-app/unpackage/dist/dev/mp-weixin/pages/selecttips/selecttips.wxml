@@ -1,2 +1,2 @@
 <import src="./selecttips.vue.wxml" />
-    <template is="484b058c" data="{{ ...$root['0'], $root }}"/>
+    <template is="018e2e6e" data="{{ ...$root['0'], $root }}"/>

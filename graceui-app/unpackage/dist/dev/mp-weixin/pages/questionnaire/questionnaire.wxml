@@ -1,2 +1,2 @@
 <import src="./questionnaire.vue.wxml" />
-    <template is="606eb642" data="{{ ...$root['0'], $root }}"/>
+    <template is="219db076" data="{{ ...$root['0'], $root }}"/>

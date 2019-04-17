@@ -51,10 +51,10 @@
 			<view class="info-bottom">
 				<view class="info-bottom-left">
 					<image :src="msgs[0].avatar"></image>
-					<text class="nickname">{{msgs[0].nickname}}</text>
+					<view class="nickname">{{msgs[0].nickname}}</view>
 				</view>
 				<view class="info-bottom-right">
-					<text class="nickname">{{msgs[0].time}}</text>
+					<view class="nickname">{{msgs[0].time}}</view>
 				</view>
 			</view>
 		</view>
@@ -62,7 +62,7 @@
 			<navigator class="msg-tile">{{msgs[1].title}}</navigator>
 			<view class="pic-box">
 				<view class="msgpic1">
-					<text>{{msgs[1].content}}</text>
+					<view style="font-size:auto;">{{msgs[1].content}}</view>
 				</view>
 				<view class="msgpic1">
 					<image :src="msgs[1].msgpic1"></image>
@@ -71,10 +71,10 @@
 			<view class="info-bottom">
 				<view class="info-bottom-left">
 					<image :src="msgs[1].avatar"></image>
-					<text class="nickname">{{msgs[1].nickname}}</text>
+					<view class="nickname">{{msgs[1].nickname}}</view>
 				</view>
 				<view class="info-bottom-right">
-					<text class="nickname">{{msgs[1].time}}</text>
+					<view class="nickname">{{msgs[1].time}}</view>
 				</view>
 			</view>
 		</view>
@@ -82,16 +82,16 @@
 			<navigator url="../info/info" class="msg-tile">{{msgs[2].title}}</navigator>
 			<view class="pic-box">
 				<view class="msgpic2">
-					<text>{{msgs[2].content}}</text>
+					<view style="font-size: auto">{{msgs[2].content}}</view>
 				</view>
 			</view>
 			<view class="info-bottom">
 				<view class="info-bottom-left">
 					<image :src="msgs[2].avatar"></image>
-					<text class="nickname">{{msgs[2].nickname}}</text>
+					<view class="nickname">{{msgs[2].nickname}}</view>
 				</view>
 				<view class="info-bottom-right">
-					<text class="nickname">{{msgs[2].time}}</text>
+					<view class="nickname">{{msgs[2].time}}</view>
 				</view>
 			</view>
 		</view>
@@ -111,10 +111,10 @@
 			<view class="info-bottom">
 				<view class="info-bottom-left">
 					<image :src="msgs[3].avatar"></image>
-					<text class="nickname">{{msgs[3].nickname}}</text>
+					<view class="nickname">{{msgs[3].nickname}}</view>
 				</view>
 				<view class="info-bottom-right">
-					<text class="nickname">{{msgs[3].time}}</text>
+					<view class="nickname">{{msgs[3].time}}</view>
 				</view>
 			</view>
 		</view>
@@ -324,11 +324,9 @@
 	}
 	.msgpic1{
 		height: 180upx;
-		font-size: 30upx;
 	}
 	.msgpic2{
 		height: 180upx;
-		font-size: 30upx;
 	}
     .msgpic1 image{
 		width: 230upx;
@@ -362,6 +360,7 @@
 	}
 	.info-bottom-left{
 		display: flex;
+		align-items: center;
 	}
 	.info-bottom-left image{
 		width: 65upx;
@@ -370,8 +369,8 @@
 		margin-right: 20upx;
 	}
     .nickname{
-		font-size: 35upx;
-		color: #E6E7E9;
+		font-size: 25upx;
+		color: #999999;
 	}
 	.writemsg {
 		width: 100upx;

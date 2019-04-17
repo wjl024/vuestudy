@@ -1,2 +1,2 @@
 <import src="./citySelect.vue.wxml" />
-    <template is="1d75435a" data="{{ ...$root['0'], $root }}"/>
+    <template is="4328f48e" data="{{ ...$root['0'], $root }}"/>

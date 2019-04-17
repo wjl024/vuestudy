@@ -54,7 +54,7 @@
 		font-size: 50rpx;
 }
 .list-info.data-v-361c7582{
-		font-size: 30rpx;
+		font-size: 29rpx;
 		color: #A9A9A9;
 }
 .login-area-right.data-v-361c7582{
@@ -185,6 +185,7 @@
 ._hr.data-v-361c7582{
 		height:35rpx;
 		background-color: #EEEEEE;
+		border: none;
 }
 .point.data-v-361c7582{
 		display:block;

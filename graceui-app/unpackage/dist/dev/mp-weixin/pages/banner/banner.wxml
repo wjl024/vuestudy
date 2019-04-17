@@ -1,2 +1,2 @@
 <import src="./banner.vue.wxml" />
-    <template is="6b0486ba" data="{{ ...$root['0'], $root }}"/>
+    <template is="70c6abee" data="{{ ...$root['0'], $root }}"/>

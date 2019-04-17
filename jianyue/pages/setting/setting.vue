@@ -145,7 +145,7 @@ export default {
 	}
 	.out{
 		color:#EA6F5A;
-		width: 250upx;
+		width: 280upx;
 		border: 1px solid #EA6F5A;
 		display: flex;
 		justify-content: center;

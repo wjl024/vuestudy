@@ -58,7 +58,7 @@
 }
 .out.data-v-77938138{
 	color:#EA6F5A;
-	width: 250rpx;
+	width: 280rpx;
 	border: 1px solid #EA6F5A;
 	display: -webkit-box;
 	display: -webkit-flex;

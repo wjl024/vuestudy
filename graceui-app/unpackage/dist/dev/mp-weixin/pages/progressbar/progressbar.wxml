@@ -1,2 +1,2 @@
 <import src="./progressbar.vue.wxml" />
-    <template is="4354a2f0" data="{{ ...$root['0'], $root }}"/>
+    <template is="65e1e2bc" data="{{ ...$root['0'], $root }}"/>
