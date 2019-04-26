@@ -1,5 +1,5 @@
 <template name="graceMaskView">
-	<view class="grace-mask" v-if="show" >
+	<view class="grace-mask" v-if="show" @touchmove.stop.prevent>
 		<view class="grace-mask-view" :style="{width: width}" v-if="show">
 			<view class="grace-mask-view-content" :style="{background:bgcolor}">
 				<slot></slot>
@@ -32,7 +32,7 @@ export default {
 }
 </script>
 <style>
-.grace-mask{background:rgba(0, 0, 0, 0.5); position:fixed; width:100%; height:100%; left:0; top:0; z-index:1;}
+.grace-mask{background:rgba(0, 0, 0, 0.5); position:fixed; width:100%; height:100%; left:0; top:0; z-index:99;}
 .grace-mask-view{width:90%; position:fixed; left:50%; top:50%; z-index:99; transform: translate(-50%, -50%);}
-.grace-mask-view-content{width:100%;border-radius:20upx ;}
+.grace-mask-view-content{width:100%;border-radius:7upx;display: flex;align-items: flex-start;justify-content: center; flex-direction: column; height: 100upx;}
 </style>

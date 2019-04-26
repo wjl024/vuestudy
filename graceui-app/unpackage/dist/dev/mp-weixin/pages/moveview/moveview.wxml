@@ -1,2 +1,2 @@
 <import src="./moveview.vue.wxml" />
-    <template is="90695a24" data="{{ ...$root['0'], $root }}"/>
+    <template is="4d2db068" data="{{ ...$root['0'], $root }}"/>

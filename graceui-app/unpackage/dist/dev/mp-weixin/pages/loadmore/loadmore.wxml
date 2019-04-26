@@ -1,2 +1,2 @@
 <import src="./loadmore.vue.wxml" />
-    <template is="6f069ee4" data="{{ ...$root['0'], $root }}"/>
+    <template is="5ddf0e08" data="{{ ...$root['0'], $root }}"/>

@@ -1,0 +1,99 @@
+<template name="94db03a4"><view class="_view data-v-3ff5074c content"><view class="_view data-v-3ff5074c msg-header"><view class="_view data-v-3ff5074c title"><text class="_text data-v-3ff5074c">深入理解Mybatis插件开发</text></view><view class="_view data-v-3ff5074c user-info"><view class="_view data-v-3ff5074c user-info-left"><image src="../../static/104.jpg" class="_image data-v-3ff5074c avatar"></image><text class="_text data-v-3ff5074c nickname">java高并发</text></view><view class="_view data-v-3ff5074c followed"><text class="_text data-v-3ff5074c followed">+ 关注</text></view></view><view class="_view data-v-3ff5074c msg-info"><text class="_text data-v-3ff5074c left">字数  2476·阅读 514</text><text class="_text data-v-3ff5074c left">2019-03-09   15:13</text></view><view class="_view data-v-3ff5074c text-content"><view class="_view data-v-3ff5074c msg"><text class="_text data-v-3ff5074c title1">阅读目录</text>\n	
+							
+							
+1.背景
+2.Mybatis插件典型适用场景
+3.Mybatis插件介绍
+4.Mybatis插件实现机制
+5.Mybatis插件开发例子
+6.小结
+\n\n<text class="_text data-v-3ff5074c title1">背景</text>\n\n
+关于Mybatis插件，大部分人都知道，也都使用过，但很多时候，我们仅仅是停留在表面上，知道Mybatis插件可以在DAO层进行拦截，如打印执行的SQL语句日志，做一些权限控制，分页等功能；但对其内部实现机制，涉及的软件设计模式，编程思想往往没有深入的理解。
+
+本篇案例将帮助读者对Mybatis插件的使用场景，实现机制，以及其中涉及的编程思想进行一个小结，希望对以后的编程开发工作有所帮助。
+
+注：本案例以mybatis 3.4.7-SNAPSHOT版本为例。
+
+PS：文章是挺久之前写的，当时花了一些心思，存到电脑的word里，今天正好看到，就是里面的源码都是图片，哈哈哈，凑合着看吧。
+\n\n<text class="_text data-v-3ff5074c title1">Mybatis插件典型适用场景</text>\n\n
+分页功能
+
+mybatis的分页默认是基于内存分页的（查出所有，再截取），数据量大的情况下效率较低，不过使用mybatis插件可以改变该行为，只需要拦截StatementHandler类的prepare方法，改变要执行的SQL语句为分页语句即可；
+
+公共字段统一赋值
+
+一般业务系统都会有创建者，创建时间，修改者，修改时间四个字段，对于这四个字段的赋值，实际上可以在DAO层统一拦截处理，可以用mybatis插件拦截Executor类的update方法，对相关参数进行统一赋值即可；
+
+性能监控
+
+对于SQL语句执行的性能监控，可以通过拦截Executor类的update, query等方法，用日志记录每个方法执行的时间；
+
+其它
+
+其实mybatis扩展性还是很强的，基于插件机制，基本上可以控制SQL执行的各个阶段，如执行阶段，参数处理阶段，语法构建阶段，结果集处理阶段，具体可以根据项目业务来实现对应业务逻辑。
+\n\n<text class="_text data-v-3ff5074c title1">Mybatis插件介绍</text>\n\n
+什么是Mybatis插件\n
+
+与其称为Mybatis插件，不如叫Mybatis拦截器，更加符合其功能定位，实际上它就是一个拦截器，应用代理模式，在方法级别上进行拦截。
+
+支持拦截的方法\n
+
+执行器Executor（update、query、commit、rollback等方法）；
+参数处理器ParameterHandler（getParameterObject、setParameters方法）；
+结果集处理器ResultSetHandler（handleResultSets、handleOutputParameters等方法）；
+SQL语法构建器StatementHandler（prepare、parameterize、batch、update、query等方法）；
+拦截阶段\n
+
+那么这些类上的方法都是在什么阶段被拦截的呢？为理解这个问题，我们先看段简单的代码（摘自mybatis源码中的单元测试SqlSessionTest类），来了解下典型的mybatis执行流程，如下代码所示：
+
+
+以上代码主要完成以下功能：\n
+
+读取mybatis的xml配置文件信息
+通过SqlSessionFactoryBuilder创建SqlSessionFactory对象
+通过SqlSessionFactory获取SqlSession对象
+执行SqlSession对象的selectList方法，查询结果
+关闭SqlSession
+如下是时序图，在整个时序图中，涉及到mybatis插件部分已标红，基本上就是体现在上文中提到的四个类上，对这些类上的方法进行拦截。<image src="../../static/img1.jpg" style="margin-top:40rpx;margin-bottom:40rpx; width:100%;height: 80rpx;" class="_image data-v-3ff5074c"></image>\n\n<text class="_text data-v-3ff5074c title1">Mybatis插件实现机制</text>\n\n
+插件配置信息的加载
+
+先来看下mybatis是如何加载插件配置的，对应的xml配置信息如下：<image src="../../static/img2.jpg" style="margin-top:40rpx;margin-bottom:40rpx; width: 100%;height: 180rpx;" class="_image data-v-3ff5074c"></image>对应的解析代码如下，主要做以下工作：
+
+根据解析到的类信息创建Interceptor对象；
+调用setProperties方法设置属性变量；
+添加到Configuration的interceptorChain拦截器链中；<image src="../../static/img3.jpg" style="margin-top:40rpx;margin-bottom:40rpx; width: 100%;height: 120rpx;" class="_image data-v-3ff5074c"></image>以上逻辑对应的时序图如下：
+
+
+代理对象的生成
+
+Mybatis插件的实现机制主要是基于动态代理实现的，其中最为关键的就是代理对象的生成，所以有必要来了解下这些代理对象是如何生成的。
+
+Executor代理对象
+
+ParameterHandler代理对象
+
+ResultSetHandler代理对象<image src="../../static/img6.jpg" style="margin-top:40rpx;margin-bottom: 40rpx; width: 100%;height: 50rpx;" class="_image data-v-3ff5074c"></image>StatementHandler代理对象
+
+观察源码，发现这些可拦截的类对应的对象生成都是通过InterceptorChain的pluginAll方法来创建的，进一步观察pluginAll方法，如下：
+
+遍历所有拦截器，调用拦截器的plugin方法生成代理对象，注意生成代理对象重新赋值给target，所以如果有多个拦截器的话，生成的代理对象会被另一个代理对象代理，从而形成一个代理链条，执行的时候，依次执行所有拦截器的拦截逻辑代码；
+
+接下来看一下我们在编写拦截器的时候，一个典型的plugin方法实现方式，如下：
+
+再进一步查看wrap方法，如下：
+
+典型的动态代理实现，调用的是Proxy.newProxyInstance方法来生成代理对象。
+
+以上逻辑对应的时序图如下，这里我们假设声明了两个拦截器，那么在创建target代理对象的时候，最终返回的代理对象proxy2，实际上代理了proxy1，而proxy1又代理了target，：
+
+拦截逻辑的执行
+
+由于真正去执行Executor、ParameterHandler、ResultSetHandler和StatementHandler类中的方法的对象是代理对象（建议将代理对象转为class文件，反编译查看其结构，帮助理解），所以在执行方法时，首先调用的是Plugin类（实现了InvocationHandler接口）的invoke方法，如下：
+
+首先根据执行方法所属类获取拦截器中声明需要拦截的方法集合；
+
+判断当前方法需不需要执行拦截逻辑，需要的话，执行拦截逻辑方法（即Interceptor接口的intercept方法实现），不需要则直接执行原方法。
+
+可以关注下Interceptor接口的intercept方法实现，一般需要用户自定义实现逻辑，其中有一个重要参数，即Invocation类，通过改参数我们可以获取执行对象，执行方法，以及执行方法上的参数，从而进行各种业务逻辑实现，一般在该方法的最后一句代码都是invocation.proceed()（内部执行method.invoke方法），否则将无法执行下一个拦截器的intercept方法。
+
+以上逻辑对应的时序图如下，这里我们以执行executor对象的query方法为例，且假设有两个拦截器存在：</view><image src="../../static/img7.jpg" style="margin-top:20rpx;margin-bottom: 20rpx; width:100%;height: 220rpx;" class="_image data-v-3ff5074c"></image></view><view class="_view data-v-3ff5074c btn-box"><view class="_view data-v-3ff5074c btn">...</view></view><view class="_view data-v-3ff5074c msg-bottom"><view class="_view data-v-3ff5074c bottom-left"><view wx:if="{{like}}" class="_view data-v-3ff5074c"><image src="../../static/like.png" class="_image data-v-3ff5074c like" bindtap="handleProxy" data-eventid="{{'94db03a4-0'}}" data-comkey="{{$k}}"></image><text style="margin-left: 15rpx;" class="_text data-v-3ff5074c">{{number}}</text></view><view wx:if="{{!like}}" class="_view data-v-3ff5074c"><image src="../../static/select-like.png" class="_image data-v-3ff5074c like" bindtap="handleProxy" data-eventid="{{'94db03a4-1'}}" data-comkey="{{$k}}"></image><text style="margin-left: 15rpx;" class="_text data-v-3ff5074c">{{number}}</text></view></view><view class="_view data-v-3ff5074c bottom-left"><image src="../../static/wx.png" style="margin-right: 30rpx;" class="_image data-v-3ff5074c"></image><image src="../../static/朋友圈.png" style="margin-right: 30rpx;" class="_image data-v-3ff5074c"></image><text class="_text data-v-3ff5074c more">···</text></view></view></view><view class="_view data-v-3ff5074c gift"><text class="_text data-v-3ff5074c gift-title">小礼物走一走,来简书关注我</text><button class="_button data-v-3ff5074c gift-btn">赞赏支持</button></view><view class="_view data-v-3ff5074c msg-recommand"><text class="_text data-v-3ff5074c recommand">相关推荐</text><view class="_view data-v-3ff5074c msg2" wx:key="index" key="{{index}}" wx:for="{{msgs}}" wx:for-index="index" wx:for-item="msg"><view class="_view data-v-3ff5074c msg-recommand-left"><text class="_text data-v-3ff5074c msgs-title">{{msg.title}}</text><text class="_text data-v-3ff5074c read-number">阅读  {{msg.number}}</text></view><view class="_view data-v-3ff5074c msg-recommand-right"><image src="{{msg.cover}}" class="_image data-v-3ff5074c"></image></view></view></view><view class="_hr data-v-3ff5074c"></view><view class="_view data-v-3ff5074c comment"><view class="_view data-v-3ff5074c comment-header"><view class="_view data-v-3ff5074c comment-header-left" style="margin-left: 40rpx;"><text class="_text data-v-3ff5074c comment-number">评论(0)</text><view class="_view data-v-3ff5074c condition" style="margin-left: 20rpx; margin-top: 45rpx;">只看作者</view></view><view class="_view data-v-3ff5074c comment-header-right" style="margin-right: 40rpx;"><text class="_text data-v-3ff5074c comment-number ">按时间倒序</text></view></view><view class="_view data-v-3ff5074c comment-content"><image src="../../static/icon-comments.png" style="width: 50%; height:150rpx ;" class="_image data-v-3ff5074c"></image><view class="_view data-v-3ff5074c null-comment" style="width: 85%; display: flex;align-items: center;justify-content: center; margin-top: 20rpx;">智慧如你,不想<navigator class="_navigator data-v-3ff5074c release">发表一点看法</navigator>咩~</view></view><view class="_view data-v-3ff5074c write-comment"><view class="_view data-v-3ff5074c write-comment-1"><image src="../../static/write.png" class="_image data-v-3ff5074c"></image><input type="text" class="_input data-v-3ff5074c writemsg" placeholder="写下你的评论..." /></view></view><view class="_view data-v-3ff5074c bottom-bar"><view class="_view data-v-3ff5074c bottom-bar-1"><view class="_view data-v-3ff5074c praise"><image class="_image data-v-3ff5074c img" src="../../static/赞赏收益.png"></image><text class="_text data-v-3ff5074c bar-info">赞赏</text></view><view class="_view data-v-3ff5074c praise"><image class="_image data-v-3ff5074c img" src="../../static/comment-8a.png"></image><text class="_text data-v-3ff5074c bar-info">评论 0</text></view><view class="_view data-v-3ff5074c praise"><image class="_image data-v-3ff5074c img" src="../../static/like.png" wx:if="{{like}}" bindtap="handleProxy" data-eventid="{{'94db03a4-2'}}" data-comkey="{{$k}}"></image><image class="_image data-v-3ff5074c img" src="../../static/select-like.png" wx:if="{{!like}}" bindtap="handleProxy" data-eventid="{{'94db03a4-3'}}" data-comkey="{{$k}}"></image><text class="_text data-v-3ff5074c bar-info">喜欢 {{number}}</text></view><view class="_view data-v-3ff5074c praise"><image class="_image data-v-3ff5074c img" src="../../static/share.png"></image><text class="_text data-v-3ff5074c bar-info">分享</text></view></view></view></view></view></template>

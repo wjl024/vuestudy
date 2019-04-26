@@ -1,2 +1,2 @@
 <import src="./skeleton.vue.wxml" />
-    <template is="fb65f664" data="{{ ...$root['0'], $root }}"/>
+    <template is="17af6248" data="{{ ...$root['0'], $root }}"/>

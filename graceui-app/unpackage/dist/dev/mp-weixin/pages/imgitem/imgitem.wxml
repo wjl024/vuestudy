@@ -1,2 +1,2 @@
 <import src="./imgitem.vue.wxml" />
-    <template is="32bb6b48" data="{{ ...$root['0'], $root }}"/>
+    <template is="cbdc8354" data="{{ ...$root['0'], $root }}"/>

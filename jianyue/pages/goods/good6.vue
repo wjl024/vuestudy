@@ -127,11 +127,11 @@
 			</swiper>
 		</view>
 		<view class="navbar">
-			<view class="s-bar">
+			<view class="s-bar" @tap="toChat">
 				<image src="../../static/wang.png" style="width: 40upx;height: 40upx;"></image>
 				<view class="bar-name">客服</view>
 			</view>
-			<view :class="[show2?'bar-cart':'s-bar']">
+			<view :class="[show2?'bar-cart':'s-bar']" @tap="toAccount">
 				<image src="../../static/cart.png" style="width: 40upx;height: 40upx;"></image>
 				<view class="bar-name">购物车
 				</view>
@@ -142,9 +142,9 @@
 				<view class="bar-name">店铺</view>
 			</view>
 			<view class="b-bar" @tap="showModal" data-target="bottomModal">加入购物车</view>
-			<view class="b-bar1" @tap="pay" data-target="bottomModal">立即购买</view>
+			<view class="b-bar1" @tap="showModal" data-target="bottomModal">立即购买</view>
 		</view>
-		<view class="cu-modal bottom-modal" :class="modalName=='bottomModal'?'show':''">
+		<view class="cu-modal bottom-modal" :class="modalName=='bottomModal'?'show':''"  @touchmove.stop.prevent>
 			<view class="cu-dialog">
 				<view class="buy-content">
 					<image src="../../static/j-info6.jpg" style="height: 180upx;width: 210upx;position: relative;top: -20upx; left:20upx;"></image>
@@ -271,6 +271,19 @@
 				uni.showToast({
 					title: '加入购物车成功',
 					duration: 1000
+				})
+			},
+			toChat:function(){
+				uni.navigateTo({
+					url:'../chat/chat',
+					fail(res) {
+						console.log(res.errMsg);
+					}
+				})
+			},
+			toAccount:function(){
+				uni.navigateTo({
+					url:'../account/account',
 				})
 			},
 			tabChange: function(e) {

@@ -117,14 +117,15 @@
 	.navbar{
 		margin-left: 20upx;
 		flex: 1 1 85%;
-		height: 100upx;
+		font-size: 28upx;
+		height: 70upx;
 		display: flex;
 		align-items: center;
 		border-bottom: 1px solid #D3D3D3;
 	}
 	.img{
-		width:80upx;
-		height:80upx;
+		width:60upx;
+		height:60upx;
 	}
 	.img1{
 		width:60upx;

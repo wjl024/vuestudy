@@ -1,6 +1,11 @@
 <template>
 	<view class="content">
-		<view class="good-card">
+		<view v-if="items.length==0" class="null">
+			<image src="../../static/cart.png" style="width: 160upx;height: 150upx;"></image>
+			<view style="font-size: 30upx;margin: 20upx 0;">购物车空空如也</view>
+			<navigator url="../shopping/shopping" style="font-size: 30upx;color: #10AEFF;">去逛逛</navigator>
+		</view>
+		<view class="good-card" v-if="items.length>0">
 			<view class="card-top">
 				<view class="card-name">
 					<radio color="#FD572B" style="margin-left: 2.5%;" :checked="checkfull" @tap="checkall"></radio>
@@ -10,31 +15,37 @@
 				<view class="finish" style="color: #10AEFF;margin-right: 2.5%;" v-if="!finish" @tap="iffinish">编辑</view>
 				<view class="finish" style="color: #10AEFF;margin-right: 2.5%;" v-if="finish" @tap="iffinish">完成</view>
 			</view>
-			<view class="top-content">
-				<radio-group color="#FD572B" style="width: 100%;">
-					<label style="display: flex;align-items: center;" v-for="(item, index) in items" :key="item.value">
-						<view>
-							<radio :value="item.value" color="#FD572B" :checked="checkone" @tap="one"></radio>
-						</view>
-						<view style="display: flex;width: 100%;">
-							<image :src="item.imgurl" style="height: 160upx;flex:0 0 24%; margin-left: 2%;margin-right: 3%;"></image>
-							<view style="display: flex;flex-direction: column;flex:0 0 63.5%;justify-content: space-between;">
-								<view style="font-size: 30upx;" v-if="!finish">{{item.name}}</view>
-								<view v-if="finish" style="display: flex;">
-									<button style="flex: 0 0 12%;margin-left:0; height: 40upx; display: flex;justify-content: center;align-items: center;"
-									 @tap="substract" :disabled="item.number==1">-</button>
-									<view style="flex: 0 0 12%; position:relative ; left: -62%; width: 60upx; height: 40upx;background-color: #EEEEEE;display: flex;justify-content: center;align-items: center;">{{item.number}}</view>
-									<button style="flex: 0 0 12%;margin-left: -62%; width: 60upx; height: 40upx; display: flex;justify-content: center;align-items: center;"
-									 @tap="plus">+</button>
-								</view>
-								<view style="display: flex;justify-content: space-between;margin-bottom: 5%;">
-									<view style="font-size: 30upx;color: #FD572B;">{{item.price}}</view>
-									<view style="font-size: 25upx;">×{{item.number}}</view>
+			<view class="top-content" v-for="(item, index) in items" :key="item.value">
+				<view class="carrier" :class="[theIndex==index?'open':oldIndex==index?'close':'']" @touchstart="touchStart(index,$event)"
+				 @touchmove="touchMove(index,$event)" @touchend="touchEnd(index,$event)">
+					<radio-group color="#FD572B" style="width: 100%;">
+						<label style="display: flex;align-items: center;">
+							<view>
+								<radio :value="item.value" color="#FD572B" :checked="item.checkone" @tap="selected(index)"></radio>
+							</view>
+							<view style="display: flex;width: 100%;">
+								<image :src="item.imgurl" style="height: 160upx;flex:0 0 20%; margin-left: 2%;margin-right: 3%;"></image>
+								<view style="display: flex;flex-direction: column;flex:0 0 55%;justify-content: space-between;">
+									<view style="font-size: 30upx;" v-if="!finish">{{item.name}}</view>
+									<view v-if="finish" style="display: flex;">
+										<button style="flex: 0 0 12%;margin-left:0; height: 40upx; display: flex;justify-content: center;align-items: center;"
+										 @tap="substract" :disabled="item.number==1">-</button>
+										<view style="flex: 0 0 12%; position:relative ; left: -62%; width: 60upx; height: 40upx;background-color: #EEEEEE;display: flex;justify-content: center;align-items: center;">{{item.number}}</view>
+										<button style="flex: 0 0 12%;margin-left: -62%; width: 60upx; height: 40upx; display: flex;justify-content: center;align-items: center;"
+										 @tap="plus">+</button>
+									</view>
+									<view style="display: flex;justify-content: space-between;margin-bottom: 5%;">
+										<view style="font-size: 30upx;color: #FD572B;">{{item.price}}</view>
+										<view style="font-size: 25upx;">×{{item.number}}</view>
+									</view>
 								</view>
 							</view>
-						</view>
-					</label>
-				</radio-group>
+						</label>
+					</radio-group>
+					<view class="menu" @tap="deleteGoods(item.id)">
+						<image src="../../static/trash.png" class="icon-trash"></image>
+					</view>
+				</view>
 			</view>
 		</view>
 		<view class="more" style="text-align: center;font-size: 30upx;margin-bottom: 25upx;">更多精选商品</view>
@@ -73,16 +84,17 @@
 		<view class="bottom-bar">
 			<view class="bottom-content">
 				<view class="account-left" style="display: flex;align-items: center;">
-					<radio color="#FD572B" style="display: flex;align-items: center;" :checked="checkfull" @tap="checkall">全选</radio>
-					<view style="border: 2upx solid #f39994; color: #f39994;background-color: #FFFFFF;height: 60upx;width: 120upx;border-radius: 60upx;display: flex;justify-content: center;align-items: center;" v-if="finish">删除</view>
+					<radio color="#FD572B" style="display: flex;align-items: center;" :checked="checkfull" @tap="allSelect" :disabled="items.length==0">全选</radio>
+					<view style="border: 2upx solid #FF0000; color: #FF0000;background-color: #FFFFFF;height: 60upx;width: 120upx;border-radius: 60upx;display: flex;justify-content: center;align-items: center;"
+					 v-if="finish&&items.length>0" @tap="deleteList">删除</view>
 					<view class="account-right">
-						<view v-if="!checkone" style="color: #8A8A8A;">合计：&nbsp;&nbsp;￥0.00</view>
-						<view class="account" v-if="checkone">合计：&nbsp;&nbsp;￥{{sum}}.00</view>
+						<view v-if="!items[0].checkone" style="color: #8A8A8A;">合计：&nbsp;&nbsp;￥0.00</view>
+						<view class="account" v-if="items[0].checkone">合计：&nbsp;&nbsp;￥{{sum}}.00</view>
 						<view class="detail">不含运费</view>
 					</view>
 				</view>
-				<view class="buy" v-if="checkone">结算({{items[0].number}})</view>
-				<view class="buyfalse" v-if="!checkone">结算(0)</view>
+				<view class="buy" v-if="items[0].checkone" @tap="toAccount">结算({{items[0].number}})</view>
+				<view class="buyfalse" v-if="!items[0].checkone">结算(0)</view>
 			</view>
 		</view>
 	</view>
@@ -92,19 +104,23 @@
 	export default {
 		data() {
 			return {
-				checkfull: true,
-				checkone:true,
+				theIndex: null,
+				oldIndex: null,
+				isStop: false,
+				checkfull: false,
 				finish: false,
-				sum:0,
+				selectedList: [],
+				sum: 0,
 				items: [{
+					id: 1,
 					value: 228,
 					price: '￥228.00',
 					imgurl: '../../static/j-info6.jpg',
 					number: 1,
-					name: '《古文观止》全四册'
+					name: '《古文观止》全四册',
+					checkone: false
 				}],
-				goodsList: [
-					{
+				goodsList: [{
 						id: 1,
 						cover: '../../static/more1.jpg',
 						name: '掌上游戏机300款怀旧游戏',
@@ -147,40 +163,211 @@
 
 		},
 		onShow() {
-            for (let i = 0; i < this.items.length; i++) {
-            	if(this.checkone||this.checkfull){
-            	this.sum+=this.items[i].value*this.items[i].number;
-            	break;
-            	}
-            }
+			this.sum = this.items[0].value * this.items[0].number;
 		},
 		methods: {
-			checkall: function() {
-				this.checkfull = !this.checkfull
-				if (this.items.length = 1) {
-					this.checkone = this.checkfull
-				}
-			},
-			one:function(){
-				this.checkone=!this.checkone
-				if(this.items.length=1){
-					this.checkfull=this.checkone
-				}
-			},
 			iffinish: function() {
 				this.finish = !this.finish
 			},
 			substract: function() {
 				this.items[0].number--;
+				for (let i = 0; i < this.items.length; i++) {
+					if (this.items[0].checkone || this.checkfull) {
+						this.sum -= this.items[i].value;
+						break;
+					}
+				}
 			},
 			plus: function() {
 				this.items[0].number++;
+				for (let i = 0; i < this.items.length; i++) {
+					if (this.items[0].checkone || this.checkfull) {
+						this.sum += this.items[i].value;
+						break;
+					}
+				}
+			},
+			deleteGoods: function(id) {
+				var _this=this;
+				uni.showModal({
+					title:'提示',
+					content:'确定要删除这件宝贝吗?',
+					success(res) {
+						if(res.confirm){
+							let len = _this.items.length;
+							for (let i = 0; i < len; i++) {
+								if (id == _this.items[i].id) {
+									_this.items.splice(i, 1);
+									break;
+								}
+							}
+							_this.checkfull = false;
+						}else if(res.cancel){
+							console.log('取消');
+						}
+					}
+				})
+			},
+			//控制左滑删除效果-begin
+			touchStart(index, event) {
+				//多点触控不触发
+				if (event.touches.length > 1) {
+					this.isStop = true;
+					return;
+				}
+				this.oldIndex = this.theIndex;
+				this.theIndex = null;
+				//初始坐标
+				this.initXY = [event.touches[0].pageX, event.touches[0].pageY];
+			},
+			touchMove(index, event) {
+				//多点触控不触发
+				if (event.touches.length > 1) {
+					this.isStop = true;
+					return;
+				}
+				let moveX = event.touches[0].pageX - this.initXY[0];
+				let moveY = event.touches[0].pageY - this.initXY[1];
+
+				if (this.isStop || Math.abs(moveX) < 5) {
+					return;
+				}
+				if (Math.abs(moveY) > Math.abs(moveX)) {
+					// 竖向滑动-不触发左滑效果
+					this.isStop = true;
+					return;
+				}
+
+				if (moveX < 0) {
+					this.theIndex = index;
+					this.isStop = true;
+				} else if (moveX > 0) {
+					if (this.theIndex != null && this.oldIndex == this.theIndex) {
+						this.oldIndex = index;
+						this.theIndex = null;
+						this.isStop = true;
+						setTimeout(() => {
+							this.oldIndex = null;
+						}, 150)
+					}
+				}
+			},
+			touchEnd(index, $event) {
+				//结束禁止触发效果
+				this.isStop = false;
+			},
+			//控制左滑删除效果-end
+			deleteList() {
+				var _this=this;
+				uni.showModal({
+					title: '提示',
+					content: '确定要删除全部的宝贝吗?',
+					success: function(res) {
+						if (res.confirm) {
+							let len = _this.selectedList.length;
+							for (let i = 0; i < len; i++) {
+								_this.deleteGoods(_this.selectedList[i]);
+							}
+							_this.selectedList = [];
+							_this.checkfull = _this.selectedList.length == _this.items.length && _this.items.length > 0;
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				})
+			},
+			toAccount(){
+				uni.navigateTo({
+					url:'../account/account',
+					animationType:'pop-in',
+					animationDuration:3000
+				})
+			},
+			// 选中商品
+			selected(index) {
+				this.items[index].checkone = this.items[index].checkone ? false : true;
+				let i = this.selectedList.indexOf(this.items[index].id);
+				i > -1 ? this.selectedList.splice(i, 1) : this.selectedList.push(this.items[index].id);
+				this.checkfull = this.selectedList.length == this.items.length;
+			},
+			//全选
+			checkall: function() {
+				this.checkfull = !this.checkfull;
+				if (this.items.length == 1) {
+					this.items[0].checkone = this.checkfull;
+				}
+			},
+			allSelect() {
+				let len = this.items.length;
+				let arr = [];
+				for (let i = 0; i < len; i++) {
+					this.items[i].checkone = this.checkfull ? false : true;
+					arr.push(this.items[i].id);
+				}
+				this.selectedList = this.checkfull ? [] : arr;
+				this.checkfull = this.items.length == 0 ? false : true;
 			}
 		}
 	}
 </script>
 
-<style scoped>
+<style lang="scss">
+	.icon-trash {
+		width: 100upx;
+		height: 80upx;
+	}
+
+	.carrier {
+		display: flex;
+
+		@keyframes showMenu {
+			0% {
+				transform: translateX(0);
+			}
+
+			100% {
+				transform: translateX(-30%);
+			}
+		}
+
+		@keyframes closeMenu {
+			0% {
+				transform: translateX(-30%);
+			}
+
+			100% {
+				transform: translateX(0);
+			}
+		}
+
+		&.open {
+			animation: showMenu 0.25s linear both;
+		}
+
+		&.close {
+			animation: closeMenu 0.15s linear both;
+		}
+	}
+
+	.null {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 100upx 0;
+	}
+
+	.menu {
+		position: relative;
+		width: 260upx;
+		right: 5%;
+		height: 160upx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #FF0000;
+	}
+
 	.detail {
 		width: 100%;
 		float: left;
@@ -246,6 +433,7 @@
 		width: 95%;
 		display: flex;
 		align-items: center;
+		overflow: hidden;
 	}
 
 	.good-card {

@@ -1,1 +1,1 @@
-<template name="139bca16"><view class="_view 139bca16 grace-full-loading" wx:if="{{graceFullLoading}}"><view class="_view 139bca16"><image src="{{logoUrl}}" mode="widthFix" class="_image 139bca16"></image></view></view></template>
+<template name="673bdd22"><view class="_view 673bdd22 grace-full-loading" wx:if="{{graceFullLoading}}"><view class="_view 673bdd22"><image src="{{logoUrl}}" mode="widthFix" class="_image 673bdd22"></image></view></view></template>

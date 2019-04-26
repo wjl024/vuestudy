@@ -1,0 +1,16 @@
+
+._notice.data-v-8d31f246 {
+	width: 80%;
+	position: relative;
+	left: 15%;
+	top:-50rpx;
+	background:#FFFFFF;
+	font-size: 25rpx;
+	height: 50rpx;
+	color: #000000;
+	overflow: hidden;
+}
+._swiper.data-v-8d31f246 {
+	line-height: 50rpx;
+}
+

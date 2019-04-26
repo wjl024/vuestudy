@@ -1,2 +1,2 @@
 <import src="./boxbanner.vue.wxml" />
-    <template is="34f9569e" data="{{ ...$root['0'], $root }}"/>
+    <template is="098b84d0" data="{{ ...$root['0'], $root }}"/>

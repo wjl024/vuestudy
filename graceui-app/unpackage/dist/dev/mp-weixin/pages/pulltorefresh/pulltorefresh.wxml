@@ -1,2 +1,2 @@
 <import src="./pulltorefresh.vue.wxml" />
-    <template is="eaca0c34" data="{{ ...$root['0'], $root }}"/>
+    <template is="576a46e0" data="{{ ...$root['0'], $root }}"/>

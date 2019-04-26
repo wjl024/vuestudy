@@ -1,2 +1,2 @@
 <import src="./slidedo.vue.wxml" />
-    <template is="6fbed4b0" data="{{ ...$root['0'], $root }}"/>
+    <template is="7b9009a2" data="{{ ...$root['0'], $root }}"/>

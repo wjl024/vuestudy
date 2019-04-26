@@ -1,1 +1,1 @@
-<template name="0a62dab8"><view hidden="{{!show}}" class="_view 0a62dab8 {{[show ? 'ganimate-show grace-alert' : 'grace-alert']}}"><view class="_view 0a62dab8 icon gaicon {{['icon-' + msgtype, msgtype]}}"></view><view class="_view 0a62dab8 grace-alert-msg">{{msg}}</view></view></template>
+<template name="57ef6c9e"><view hidden="{{!show}}" class="_view 57ef6c9e {{[show ? 'ganimate-show grace-alert' : 'grace-alert']}}"><view class="_view 57ef6c9e icon gaicon {{['icon-' + msgtype, msgtype]}}"></view><view class="_view 57ef6c9e grace-alert-msg">{{msg}}</view></view></template>

@@ -1,2 +1,2 @@
 <import src="./scratchCard.vue.wxml" />
-    <template is="2678b984" data="{{ ...$root['0'], $root }}"/>
+    <template is="f8ccd904" data="{{ ...$root['0'], $root }}"/>

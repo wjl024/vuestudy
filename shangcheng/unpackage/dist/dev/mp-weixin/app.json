@@ -58,5 +58,6 @@
       }
     ]
   },
-  "permission": {}
+  "permission": {},
+  "sitemapLocation": "sitemap.json"
 }

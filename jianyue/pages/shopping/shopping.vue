@@ -110,17 +110,153 @@
 						</view>
 				   </scroll-view>
 				</swiper-item>
-				<swiper-item>首页</swiper-item>
-				<swiper-item>首页</swiper-item>
-				<swiper-item>首页</swiper-item>
-				<swiper-item>首页</swiper-item>
+				<swiper-item>
+					<scroll-view scroll-y="true">
+						<view class="condition">
+							<view style="font-size: 12upx;letter-spacing: 10upx; font-weight: bold;">MY&nbsp;&nbsp;LOVE&nbsp;&nbsp;TO&nbsp;&nbsp;YOU</view>
+							<view style="font-size: 45upx;letter-spacing: 6upx; margin-bottom: 5upx;">简阅·文化</view>
+						</view>
+						<view class="goods-list">
+							<view class="list-content">
+								<view class="goods" v-for="(good,index) in goodsList" :key="index" @tap="goDetail(good)">
+									<image :src="good.cover" style="width: 100%; height:200upx;"></image>
+									<view style="font-size: 25upx;line-height: 40upx; margin: 5%;">{{good.desc}}</view>
+									<view style="color:#FD572B;font-size: 30upx; margin-left: 5%;">{{good.price}}</view>
+								</view>
+							</view>
+						</view>
+						<view class="footer">
+							<view class="footer-content">
+								店铺主页
+							</view>
+							<view class="footer-content">
+								个人中心
+							</view>
+							<view class="footer-content">
+								店铺信息
+							</view>
+						</view>
+						<view class="tag">
+							<view style="display: flex;justify-content: center;align-items: center;">
+							<image src="../../static/thumbup-full.png" style="width: 50upx;height: 50upx;"></image>
+							<view style="font-size: 40upx;color: #8A8A8A;margin-left: 15upx;">有赞</view>
+							</view>
+							<view class="support">有赞提供技术支持</view>
+						</view>
+					</scroll-view>
+				</swiper-item>
+				<swiper-item>
+					<scroll-view scroll-y="true">
+						<view class="condition">
+							<view style="font-size: 12upx;letter-spacing: 10upx; font-weight: bold;">MY&nbsp;&nbsp;LOVE&nbsp;&nbsp;TO&nbsp;&nbsp;YOU</view>
+							<view style="font-size: 45upx;letter-spacing: 6upx; margin-bottom: 5upx;">居家·好物</view>
+						</view>
+						<view class="goods-list">
+							<view class="list-content">
+								<view class="goods" v-for="(good,index) in goodsList1" :key="index">
+									<image :src="good.cover" style="width: 100%; height:200upx;"></image>
+									<view style="font-size: 25upx;line-height: 40upx; margin: 5%;">{{good.desc}}</view>
+									<view style="color:#FD572B;font-size: 30upx; margin-left: 5%;">{{good.price}}</view>
+								</view>
+							</view>
+						</view>
+						<view class="footer">
+							<view class="footer-content">
+								店铺主页
+							</view>
+							<view class="footer-content">
+								个人中心
+							</view>
+							<view class="footer-content">
+								店铺信息
+							</view>
+						</view>
+						<view class="tag">
+							<view style="display: flex;justify-content: center;align-items: center;">
+							<image src="../../static/thumbup-full.png" style="width: 50upx;height: 50upx;"></image>
+							<view style="font-size: 40upx;color: #8A8A8A;margin-left: 15upx;">有赞</view>
+							</view>
+							<view class="support">有赞提供技术支持</view>
+						</view>
+					</scroll-view>
+				</swiper-item>
+				<swiper-item>
+					<scroll-view scroll-y="true">
+						<view class="condition">
+							<view style="font-size: 12upx;letter-spacing: 10upx; font-weight: bold;">MY&nbsp;&nbsp;LOVE&nbsp;&nbsp;TO&nbsp;&nbsp;YOU</view>
+							<view style="font-size: 45upx;letter-spacing: 6upx; margin-bottom: 5upx;">居家·好物</view>
+						</view>
+						<view class="goods-list">
+							<view class="list-content">
+								<view class="goods" v-for="(good,index) in goodsList1" :key="index">
+									<image :src="good.cover" style="width: 100%; height:200upx;"></image>
+									<view style="font-size: 25upx;line-height: 40upx; margin: 5%;">{{good.desc}}</view>
+									<view style="color:#FD572B;font-size: 30upx; margin-left: 5%;">{{good.price}}</view>
+								</view>
+							</view>
+						</view>
+						<view class="footer">
+							<view class="footer-content">
+								店铺主页
+							</view>
+							<view class="footer-content">
+								个人中心
+							</view>
+							<view class="footer-content">
+								店铺信息
+							</view>
+						</view>
+						<view class="tag">
+							<view style="display: flex;justify-content: center;align-items: center;">
+							<image src="../../static/thumbup-full.png" style="width: 50upx;height: 50upx;"></image>
+							<view style="font-size: 40upx;color: #8A8A8A;margin-left: 15upx;">有赞</view>
+							</view>
+							<view class="support">有赞提供技术支持</view>
+						</view>
+					</scroll-view>
+				</swiper-item>
+				<swiper-item>
+					<scroll-view scroll-y="true">
+						<view class="condition">
+							<view style="font-size: 12upx;letter-spacing: 10upx; font-weight: bold;">MY&nbsp;&nbsp;LOVE&nbsp;&nbsp;TO&nbsp;&nbsp;YOU</view>
+							<view style="font-size: 45upx;letter-spacing: 6upx; margin-bottom: 5upx;">居家·好物</view>
+						</view>
+						<view class="goods-list">
+							<view class="list-content">
+								<view class="goods" v-for="(good,index) in goodsList1" :key="index">
+									<image :src="good.cover" style="width: 100%; height:200upx;"></image>
+									<view style="font-size: 25upx;line-height: 40upx; margin: 5%;">{{good.desc}}</view>
+									<view style="color:#FD572B;font-size: 30upx; margin-left: 5%;">{{good.price}}</view>
+								</view>
+							</view>
+						</view>
+						<view class="footer">
+							<view class="footer-content">
+								店铺主页
+							</view>
+							<view class="footer-content">
+								个人中心
+							</view>
+							<view class="footer-content">
+								店铺信息
+							</view>
+						</view>
+						<view class="tag">
+							<view style="display: flex;justify-content: center;align-items: center;">
+							<image src="../../static/thumbup-full.png" style="width: 50upx;height: 50upx;"></image>
+							<view style="font-size: 40upx;color: #8A8A8A;margin-left: 15upx;">有赞</view>
+							</view>
+							<view class="support">有赞提供技术支持</view>
+						</view>
+					</scroll-view>
+				</swiper-item>
 			</swiper>
 		</view>
 		<view class="tabbar">
 			<view class="img-bottom"><image src="../../static/home.png"></image></view>
 			<view class="buy">全部商品</view>
 			<navigator class="buy" url="../cart/cart">购物车</navigator>
-			<view class="buy">我的订单</view>
+			<view class="buy" @tap="toMyOrder">我的订单</view>
 		</view>
 	</view>
 </template>
@@ -289,6 +425,11 @@
 				this.tabCurrentIndex = index;
 				this.titleShowId = 'tabTag-' + index;
 			},
+			toMyOrder:function(){
+				uni.navigateTo({
+					url:'../myorder/myorder',
+				})
+			},
 			goDetail:function(e){
 				uni.navigateTo({
 					url:'../goods/good'+e.id
@@ -306,7 +447,7 @@
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		background-color: #F0F0F0;
+		background-color: #F8F8F8;
 	}
 
 	.search {

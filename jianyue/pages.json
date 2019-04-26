@@ -27,9 +27,41 @@
 			}
 		},
 		{
+			"path":"pages/mywallet/mywallet",
+			"style":{
+				"navigationBarTitleText":"我的钱包",
+				"navigationStyle":"custom",
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+		},
+		{
 			"path":"pages/cart/cart",
 			"style":{
 				"navigationBarTitleText":"购物车"
+			}
+		},
+		{
+			"path":"pages/chat/chat",
+			"style":{
+				"navigationBarTitleText":"客服"
+			}
+		},
+		{
+			"path":"pages/myorder/myorder",
+			"style":{
+				"navigationBarTitleText":"会员主页",
+				"navigationStyle":"custom",
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+		},
+		{
+			"path":"pages/activity/activity",
+			"style":{
+				"navigationBarTitleText":"创作你的创作"
 			}
 		},
 		{
@@ -81,6 +113,12 @@
 			}
 		},
 		{
+			"path":"pages/missioncenter/missioncenter",
+			"style":{
+				"navigationBarTitleText":"任务中心"
+			}
+		},
+		{
 			"path":"pages/setting/setting",
 			"style":{}
 		},
@@ -99,6 +137,12 @@
 		{
 			"path":"pages/flowerworld/flowerworld",
 			"style":{}
+		},
+		{
+			"path":"pages/account/account",
+			"style":{
+				"navigationBarTitleText":"确定订单"
+			}
 		}
 	],
 	"globalStyle": {

@@ -44,7 +44,7 @@
 		<hr />
 		<view class="box1">重置密码</view>
 		<navigator url="../my/my" class="nav" open-type="navigateBack" delta="2">确定修改</navigator>
-		<graceMaskView :show="show" bgcolor="#ffffff">
+		<graceMaskView :show="show" bgcolor="#ffffff"  @touchmove.stop.prevent>
 			<view class="mask-content">
 				<view class="mask-title">请选择性别</view>
 				<view class="unilist">
@@ -63,7 +63,7 @@
 				</view>
 			</view>
 		</graceMaskView>
-		<graceMaskView :show="show1" bgcolor="#ffffff">
+		<graceMaskView :show="show1" bgcolor="#ffffff"  @touchmove.stop.prevent>
 			<view class="mask-content">
 				<view class="mask-title">请选择生日</view>
 				<view class="unilist">

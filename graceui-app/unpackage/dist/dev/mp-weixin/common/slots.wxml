@@ -1,10 +1,27 @@
 <import src="/graceUI/components/graceHeader.vue.wxml" />
 <import src="/graceUI/components/gracePopupMenu.vue.wxml" />
 <import src="/graceUI/components/graceMaskView.vue.wxml" />
+<import src="/graceUI/components/graceHeaderLineForApp.vue.wxml" />
+<import src="/graceUI/components/graceFullLoading.vue.wxml" />
+<import src="/graceUI/components/graceLoading.vue.wxml" />
+<import src="/threeComponents/mpvueCityPicker.vue.wxml" />
+<import src="/graceUI/components/graceNumberKeyboard.vue.wxml" />
+<import src="/graceUI/components/graceCirProgress.vue.wxml" />
+<import src="/graceUI/components/graceIMMsg.vue.wxml" />
+<import src="/graceUI/components/graceIMFooter.vue.wxml" />
+<import src="/graceUI/components/graceNumberBox.vue.wxml" />
+<import src="/graceUI/components/graceSpeaker.vue.wxml" />
+<import src="/graceUI/components/graceAlert.vue.wxml" />
+<import src="/graceUI/components/graceSlider.vue.wxml" />
+<import src="/graceUI/components/graceDate.vue.wxml" />
+<import src="/graceUI/components/graceCountd.vue.wxml" />
+<import src="/threeComponents/echarts/echarts.vue.wxml" />
+<import src="/graceUI/components/graceStar.vue.wxml" />
+<import src="/common/slots.wxml" />
 
-<template name="45e96c46-default-45e96c46-1"><view class="_view 45e96c46 grace-list" style="background:#4C4C4C; border:0;"><view class="_view 45e96c46 items"><view class="_view 45e96c46 icons"><image src="http://staticimgs.oss-cn-beijing.aliyuncs.com/scan.png" mode="widthFix" class="_image 45e96c46"></image></view><view class="_view 45e96c46 title" bindtap="handleProxy" data-eventid="{{'45e96c46-1'}}" data-comkey="{{$k}}">功能菜单1</view></view><view class="_view 45e96c46 items"><view class="_view 45e96c46 icons"><image src="https://staticimgs.oss-cn-beijing.aliyuncs.com/set.png" mode="widthFix" class="_image 45e96c46"></image></view><view class="_view 45e96c46 title" bindtap="handleProxy" data-eventid="{{'45e96c46-2'}}" data-comkey="{{$k}}">功能菜单2</view></view><view class="_view 45e96c46 items"><view class="_view 45e96c46 icons"><image src="https://staticimgs.oss-cn-beijing.aliyuncs.com/product.png" mode="widthFix" class="_image 45e96c46"></image></view><view class="_view 45e96c46 title" bindtap="handleProxy" data-eventid="{{'45e96c46-3'}}" data-comkey="{{$k}}">功能菜单3</view></view></view></template>
+<template name="0c2a5340-default-0c2a5340-1"><view class="_view 0c2a5340 grace-list" style="background:#4C4C4C; border:0;"><view class="_view 0c2a5340 items"><view class="_view 0c2a5340 icons"><image src="http://staticimgs.oss-cn-beijing.aliyuncs.com/scan.png" mode="widthFix" class="_image 0c2a5340"></image></view><view class="_view 0c2a5340 title" bindtap="handleProxy" data-eventid="{{'0c2a5340-1'}}" data-comkey="{{$k}}">功能菜单1</view></view><view class="_view 0c2a5340 items"><view class="_view 0c2a5340 icons"><image src="https://staticimgs.oss-cn-beijing.aliyuncs.com/set.png" mode="widthFix" class="_image 0c2a5340"></image></view><view class="_view 0c2a5340 title" bindtap="handleProxy" data-eventid="{{'0c2a5340-2'}}" data-comkey="{{$k}}">功能菜单2</view></view><view class="_view 0c2a5340 items"><view class="_view 0c2a5340 icons"><image src="https://staticimgs.oss-cn-beijing.aliyuncs.com/product.png" mode="widthFix" class="_image 0c2a5340"></image></view><view class="_view 0c2a5340 title" bindtap="handleProxy" data-eventid="{{'0c2a5340-3'}}" data-comkey="{{$k}}">功能菜单3</view></view></view></template>
 
-<template name="70c6abee-default-70c6abee-1"><view class="_view 70c6abee"><image src="{{staticUrl + 'banner-gui.png'}}" style="width:100%; margin-top:25px; border-top-right-radius:5px; border-top-left-radius:5px;" mode="widthFix" class="_image 70c6abee"></image></view><view style="padding:25px; padding-bottom:30px;" class="_view 70c6abee"><button type="warn" style="background:#F6644D; padding:0 20px;" class="_button 70c6abee">一个按钮</button></view></template>
+<template name="d0d25330-default-d0d25330-1"><view class="_view d0d25330"><image src="{{staticUrl + 'banner-gui.png'}}" style="width:100%; margin-top:25px; border-top-right-radius:5px; border-top-left-radius:5px;" mode="widthFix" class="_image d0d25330"></image></view><view style="padding:25px; padding-bottom:30px;" class="_view d0d25330"><button type="warn" style="background:#F6644D; padding:0 20px;" class="_button d0d25330">一个按钮</button></view></template>
 
-<template name="70c6abee-default-70c6abee-2"><view bindtap="handleProxy" data-eventid="{{'70c6abee-3'}}" data-comkey="{{$k}}" class="_view 70c6abee"><image src="http://static.hcoder.net/graceui/hb.png" style="width:100%; border-radius:5px;" mode="widthFix" class="_image 70c6abee"></image></view></template>
+<template name="d0d25330-default-d0d25330-2"><view bindtap="handleProxy" data-eventid="{{'d0d25330-3'}}" data-comkey="{{$k}}" class="_view d0d25330"><image src="http://static.hcoder.net/graceui/hb.png" style="width:100%; border-radius:5px;" mode="widthFix" class="_image d0d25330"></image></view></template>
 

@@ -1,2 +1,2 @@
 <import src="./footer.vue.wxml" />
-    <template is="267f3de4" data="{{ ...$root['0'], $root }}"/>
+    <template is="13908b88" data="{{ ...$root['0'], $root }}"/>

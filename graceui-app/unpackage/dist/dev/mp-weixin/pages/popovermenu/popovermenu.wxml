@@ -1,2 +1,2 @@
 <import src="./popovermenu.vue.wxml" />
-    <template is="5835e990" data="{{ ...$root['0'], $root }}"/>
+    <template is="3105e532" data="{{ ...$root['0'], $root }}"/>
